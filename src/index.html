@@ -9,29 +9,28 @@
   <!-- <script src="main.js"></script> -->
 </head>
 <body>
-    <!-- <img src="background.jpg"> -->
 
     <div id="blockForm">
       <h1 id="journalTitle">Daily Journal</h1>
       <form action=" " id="journalForm">
         <fieldset>
           <label for="journalDate" class="labelName">Date of Entry</label>
-          <input type="date" name="journalDate" id="journalDate">
+          <input type="date" class="inputBox" name="journalDate" id="journalDate">
         </fieldset>
           
         <fieldset> 
           <label for="conceptsCovered" class="labelName">Concepts Covered</label>
-          <input type="text" name="conceptsCovered" id="conceptsCovered" placeholder="Enter Concepts Here">
+          <input type="text" class="inputBox" name="conceptsCovered" id="conceptsCovered" placeholder="Enter Concepts Here">
         </fieldset>
         
         <fieldset>
           <label for="journalEntry" class="labelName">Journal Entry</label>
-          <input type="text" name="journalEntry" id="journalEntry" placeholder="Journal Entry">
+          <input type="text" class="inputBox" name="journalEntry" id="journalEntry" placeholder="Journal Entry">
         </fieldset>
         
         <fieldset>
           <label for="dailyMood" class="labelName">Mood for the Day</label>
-          <select name="dailyMood" id="dailyMood">
+          <select name="dailyMood" class="inputBox" id="dailyMood">
               <option value = "1">Optimistic</option>
               <option value = "2">Happy</option>
               <option value = "3">Excited</option>
@@ -42,7 +41,7 @@
             </select>
         </fieldset>
         
-        <button type="button" id="recordEntry">Record Journal Entry</button>
+        <button type="button" id="recordEntry">RECORD JOURNAL ENTRY</button>
       </form>
     </div>
 

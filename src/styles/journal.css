@@ -8,7 +8,12 @@ body{
   z-index: 1;
 }
 #blockForm{
-  background-color: white;
+  margin: 1em;
+  margin-top: 2em;
+  padding: .5em;
+  border-radius: 10px;
+  background: rgba(255,255,255, 0.75);
+  border: 4px solid white;
 }
 #journalTitle{
   position: relative;
@@ -17,12 +22,33 @@ body{
 #journalForm > fieldset { 
   display: flex;
   flex-direction: column;
+  background-color: white;
+}
+.inputBox {
+  margin: .5em;
 }
 .labelName {
   font-size: 1.2em;
   font-weight: bolder;
 }
-.inputBox{
-  font-size: .8em;
-  font-weight: bolder;
+#conceptsCovered{
+  width: 98%;
+}
+#journalEntry{
+  width: 98%;
+}
+#recordEntry{
+  position: relative;
+  width: 60%;
+  margin-left: 20%;
+  font-size: 1.2em;
+  color: white;
+  background-color: rgb(226, 66, 66);
+  border: 2px solid white;
+  border-radius: 15px;
+  margin-top: 3%;
+}
+#recordEntry:hover{
+  background-color: red;
+  border: 2px solid black;
 }
