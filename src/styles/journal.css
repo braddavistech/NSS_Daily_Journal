@@ -1,4 +1,28 @@
-#journalForm > fieldset{
+*{
+  margin: .1em;
+  padding: 0px;
+}
+body{
+  position: relative;
+  background-image: url('../images/background.jpg');
+  z-index: 1;
+}
+#blockForm{
+  background-color: white;
+}
+#journalTitle{
+  position: relative;
+  text-align: center;
+}
+#journalForm > fieldset { 
   display: flex;
   flex-direction: column;
+}
+.labelName {
+  font-size: 1.2em;
+  font-weight: bolder;
+}
+.inputBox{
+  font-size: .8em;
+  font-weight: bolder;
 }
