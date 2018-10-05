@@ -53,16 +53,22 @@ function dailyMood (journalNodeMoodValue, journalEntryBlock) {
         journalEntryBlock.id="optimisticJournalEntry";
     } else if (journalNodeMoodValue ==  "2"){
         journalNodeMood = "Happy";
+        journalEntryBlock.id="happyJournalEntry";
     } else if (journalNodeMoodValue ==  "3"){
         journalNodeMood = "Excited";
+        journalEntryBlock.id="excitedJournalEntry";
     } else if (journalNodeMoodValue == "4"){
         journalNodeMood = "Tired";
+        journalEntryBlock.id="tiredJournalEntry";
     } else if (journalNodeMoodValue == "5"){
         journalNodeMood = "Anxious";
+        journalEntryBlock.id="anxiousJournalEntry";
     } else if (journalNodeMoodValue == "6"){
         journalNodeMood = "Stressed";
+        journalEntryBlock.id="stressedJournalEntry";
     } else if (journalNodeMoodValue == "7"){
         journalNodeMood = "Sad";
+        journalEntryBlock.id="sadJournalEntry";
     };
 
   return journalEntryBlock, journalNodeMood;

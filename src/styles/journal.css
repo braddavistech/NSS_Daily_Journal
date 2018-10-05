@@ -63,25 +63,63 @@ body{
   border: 2px solid white;
   padding: 4px;
 }
+.journalEntryPrint > p{
+  font-weight: bolder;
+  overflow-wrap: break-word;
+}
 #optimisticJournalEntry{
-  background-image: url('../images/optimistic.jpg');
+  background-image: url(../images/optimistic1.jpg);
+  min-height: 150px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-color: white;
 }
 #happyJournalEntry{
   background-image: url('../images/happy.jpg');
-
+  min-height: 150px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-color: white;
 }
 #excitedJournalEntry{
   background-image: url('../images/excited.jpg');
+  min-height: 150px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-color: white;
 }
 #tiredJournalEntry{
   background-image: url('../images/tired.jpg');
+  min-height: 150px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-color: white;
 }
 #anxiousJournalEntry{
   background-image: url('../images/anxious.jpg');
+  min-height: 150px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-color: white;
 }
 #stressedJournalEntry{
   background-image: url('../images/stressed.jpg');
+  min-height: 150px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-color: white;
 }
 #sadJournalEntry{
   background-image: url('../images/sad.jpg');
+  min-height: 150px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-color: white;
 }
