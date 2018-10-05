@@ -32,10 +32,10 @@ body{
   font-weight: bolder;
 }
 #conceptsCovered{
-  width: 98%;
+  width: 96%;
 }
 #journalEntryText{
-  width: 98%;
+  width: 96%;
 }
 #recordEntry{
   position: relative;
@@ -66,6 +66,10 @@ body{
 .journalEntryPrint > p{
   font-weight: bolder;
   overflow-wrap: break-word;
+  font-weight: bolder;
+  overflow-wrap: break-word;
+  width: 65%;
+  margin-bottom: 15px;
 }
 #optimisticJournalEntry{
   background-image: url(../images/optimisticImg.jpg);
