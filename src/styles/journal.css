@@ -52,7 +52,7 @@ body{
   background-color: red;
   border: 2px solid black;
 }
-#journalEntryPrint{
+.journalEntryPrint{
   background-color: lightgrey;
   font-size: 20px;
   width: 80vw;
@@ -62,4 +62,26 @@ body{
   border-radius: 15px;
   border: 2px solid white;
   padding: 4px;
+}
+#optimisticJournalEntry{
+  background-image: url('../images/optimistic.jpg');
+}
+#happyJournalEntry{
+  background-image: url('../images/happy.jpg');
+
+}
+#excitedJournalEntry{
+  background-image: url('../images/excited.jpg');
+}
+#tiredJournalEntry{
+  background-image: url('../images/tired.jpg');
+}
+#anxiousJournalEntry{
+  background-image: url('../images/anxious.jpg');
+}
+#stressedJournalEntry{
+  background-image: url('../images/stressed.jpg');
+}
+#sadJournalEntry{
+  background-image: url('../images/sad.jpg');
 }

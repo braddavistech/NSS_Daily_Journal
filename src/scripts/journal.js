@@ -23,7 +23,7 @@ function renderJournalEntries () {
   document.getElementById("journalPrintPlaceholder").innerHTML = "";
   for (let i = 0; i < journalEntries.length; i++){
     let journalEntryBlock = document.createElement("div");
-    journalEntryBlock.id="journalEntryPrint";
+    journalEntryBlock.className="journalEntryPrint";
     let journalElementDate = document.createElement("p");
     let journalNodeDate = document.createTextNode(journalEntries[i].journalDate);
     journalElementDate.appendChild(journalNodeDate);
@@ -38,18 +38,19 @@ function renderJournalEntries () {
     journalEntryBlock.appendChild(journalElementMessage);
     let journalElementMood = document.createElement("p");
     let journalNodeMoodValue = journalEntries[i].journalMood;
-    journalNodeMood = dailyMood(journalNodeMoodValue);
+    journalNodeMood = dailyMood(journalNodeMoodValue, journalEntryBlock);
     journalElementMood.innerHTML=journalNodeMood;    
     journalEntryBlock.appendChild(journalElementMood);
     document.getElementById("journalPrintPlaceholder").appendChild(journalEntryBlock);
   };
 };
 
-function dailyMood (journalNodeMoodValue) {
+function dailyMood (journalNodeMoodValue, journalEntryBlock) {
   let journalNodeMood;
   
   if (journalNodeMoodValue == "1"){
         journalNodeMood = "Optimistic";
+        journalEntryBlock.id="optimisticJournalEntry";
     } else if (journalNodeMoodValue ==  "2"){
         journalNodeMood = "Happy";
     } else if (journalNodeMoodValue ==  "3"){
@@ -63,10 +64,6 @@ function dailyMood (journalNodeMoodValue) {
     } else if (journalNodeMoodValue == "7"){
         journalNodeMood = "Sad";
     };
-  
-  console.log(journalNodeMoodValue);
-  console.log(journalNodeMood)
 
-
-  return journalNodeMood;
+  return journalEntryBlock, journalNodeMood;
 };
