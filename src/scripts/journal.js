@@ -1,4 +1,5 @@
 const journalEntries = [];
+const moodText = "";
 let tempEntry = [];
 
 document.getElementById("recordEntry").addEventListener("click", recordEntry);
@@ -15,7 +16,6 @@ function recordEntry () {
     journalMood : entryMood
   };
   journalEntries.push(tempEntry);
-  console.log(journalEntries);
   renderJournalEntries();
 }
 
@@ -37,9 +37,36 @@ function renderJournalEntries () {
     journalElementMessage.appendChild(journalNodeMessage);
     journalEntryBlock.appendChild(journalElementMessage);
     let journalElementMood = document.createElement("p");
-    let journalNodeMood = document.createTextNode(journalEntries[i].journalMood);
-    journalElementMood.appendChild(journalNodeMood);
+    let journalNodeMoodValue = journalEntries[i].journalMood;
+    journalNodeMood = dailyMood(journalNodeMoodValue);
+    journalElementMood.innerHTML=journalNodeMood;    
     journalEntryBlock.appendChild(journalElementMood);
     document.getElementById("journalPrintPlaceholder").appendChild(journalEntryBlock);
   };
+};
+
+function dailyMood (journalNodeMoodValue) {
+  let journalNodeMood;
+  
+  if (journalNodeMoodValue == "1"){
+        journalNodeMood = "Optimistic";
+    } else if (journalNodeMoodValue ==  "2"){
+        journalNodeMood = "Happy";
+    } else if (journalNodeMoodValue ==  "3"){
+        journalNodeMood = "Excited";
+    } else if (journalNodeMoodValue == "4"){
+        journalNodeMood = "Tired";
+    } else if (journalNodeMoodValue == "5"){
+        journalNodeMood = "Anxious";
+    } else if (journalNodeMoodValue == "6"){
+        journalNodeMood = "Stressed";
+    } else if (journalNodeMoodValue == "7"){
+        journalNodeMood = "Sad";
+    };
+  
+  console.log(journalNodeMoodValue);
+  console.log(journalNodeMood)
+
+
+  return journalNodeMood;
 };
