@@ -20,6 +20,7 @@ function recordEntry () {
 }
 
 function renderJournalEntries () {
+  document.getElementById("journalPrintPlaceholder").innerHTML = "";
   for (let i = 0; i < journalEntries.length; i++){
     let journalEntryBlock = document.createElement("div");
     journalEntryBlock.id="journalEntryPrint";

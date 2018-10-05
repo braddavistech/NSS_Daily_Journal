@@ -58,6 +58,7 @@ body{
   width: 315px;
   justify-content: center;
   margin: auto;
+  margin-bottom: 20px;
   border: 2px solid black;
   padding: 4px;
 }
