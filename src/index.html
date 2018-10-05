@@ -6,7 +6,7 @@
   <title>Daily Journal</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="styles/journal.css" />
-  <!-- <script src="main.js"></script> -->
+  <!-- <script src="scripts/journal.js"></script> -->
 </head>
 <body>
 
@@ -24,8 +24,8 @@
         </fieldset>
         
         <fieldset>
-          <label for="journalEntry" class="labelName">Journal Entry</label>
-          <input type="text" class="inputBox" name="journalEntry" id="journalEntry" placeholder="Journal Entry">
+          <label for="journalEntryText" class="labelName">Journal Entry</label>
+          <input type="text" class="inputBox" name="journalEntryText" id="journalEntryText" placeholder="Journal Entry">
         </fieldset>
         
         <fieldset>
@@ -41,9 +41,11 @@
             </select>
         </fieldset>
         
-        <button type="button" id="recordEntry">RECORD JOURNAL ENTRY</button>
+        <input type="button" id="recordEntry" value="SAVE JOURNAL ENTRY">
       </form>
     </div>
+
+    <script src="scripts/journal.js"></script>
 
 </body>
 </html>
