@@ -16,4 +16,29 @@ function recordEntry () {
   };
   journalEntries.push(tempEntry);
   console.log(journalEntries);
+  renderJournalEntries();
 }
+
+function renderJournalEntries () {
+  for (let i = 0; i < journalEntries.length; i++){
+    let journalEntryBlock = document.createElement("div");
+    journalEntryBlock.id="journalEntryPrint";
+    let journalElementDate = document.createElement("p");
+    let journalNodeDate = document.createTextNode(journalEntries[i].journalDate);
+    journalElementDate.appendChild(journalNodeDate);
+    journalEntryBlock.appendChild(journalElementDate);
+    let journalElementConcept = document.createElement("p");
+    let journalNodeConcept = document.createTextNode(journalEntries[i].journalConcept);
+    journalElementConcept.appendChild(journalNodeConcept);
+    journalEntryBlock.appendChild(journalElementConcept);
+    let journalElementMessage = document.createElement("p");
+    let journalNodeMessage = document.createTextNode(journalEntries[i].journalMessage);
+    journalElementMessage.appendChild(journalNodeMessage);
+    journalEntryBlock.appendChild(journalElementMessage);
+    let journalElementMood = document.createElement("p");
+    let journalNodeMood = document.createTextNode(journalEntries[i].journalMood);
+    journalElementMood.appendChild(journalNodeMood);
+    journalEntryBlock.appendChild(journalElementMood);
+    document.getElementById("journalPrintPlaceholder").appendChild(journalEntryBlock);
+  };
+};

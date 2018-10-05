@@ -52,3 +52,12 @@ body{
   background-color: red;
   border: 2px solid black;
 }
+#journalEntryPrint{
+  background-color: lightgrey;
+  font-size: 20px;
+  width: 315px;
+  justify-content: center;
+  margin: auto;
+  border: 2px solid black;
+  padding: 4px;
+}
