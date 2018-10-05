@@ -55,10 +55,11 @@ body{
 #journalEntryPrint{
   background-color: lightgrey;
   font-size: 20px;
-  width: 315px;
+  width: 80vw;
   justify-content: center;
   margin: auto;
   margin-bottom: 20px;
-  border: 2px solid black;
+  border-radius: 15px;
+  border: 2px solid white;
   padding: 4px;
 }
