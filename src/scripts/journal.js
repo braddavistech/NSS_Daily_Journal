@@ -2,7 +2,17 @@ const journalEntries = [];
 const moodText = "";
 let tempEntry = [];
 
+
+
 document.getElementById("recordEntry").addEventListener("click", recordEntry);
+
+fetch("http://localhost:8088/entries")
+    .then(entries => entries.json())
+    .then(posts => {
+      console.log(posts)
+      oldPosts(posts);
+    })
+
 
 function recordEntry () {
   var entryDate = document.getElementById("journalDate").value;
@@ -16,12 +26,29 @@ function recordEntry () {
     journalMood : entryMood
   };
   journalEntries.push(tempEntry);
-  renderJournalEntries();
+  renderJournalEntries(journalEntries);
+  // journalEntries.push(tempEntry);
+  // renderJournalEntries();
 }
+
+const oldPosts = (message => {
+  for (let i = 0; i < message.length; i++){
+    tempEntry = {
+      journalDate : message[i].journalDate,
+      journalConcept : message[i].journalConcept,
+      journalMessage : message[i].journalMessage,
+      journalMood : message[i].journalMood
+    };
+    journalEntries.push(tempEntry);
+    console.log(journalEntries);
+  };
+  renderJournalEntries(journalEntries);
+});
 
 function renderJournalEntries () {
   document.getElementById("journalPrintPlaceholder").innerHTML = "";
   for (let i = 0; i < journalEntries.length; i++){
+    console.log(journalEntries[i]);
     let journalEntryBlock = document.createElement("div");
     journalEntryBlock.className="journalEntryPrint";
     let journalElementDate = document.createElement("p");
@@ -39,7 +66,7 @@ function renderJournalEntries () {
     let journalElementMood = document.createElement("p");
     let journalNodeMoodValue = journalEntries[i].journalMood;
     journalNodeMood = dailyMood(journalNodeMoodValue, journalEntryBlock);
-    journalElementMood.innerHTML=journalNodeMood;    
+    journalElementMood.innerHTML = journalNodeMood;    
     journalEntryBlock.appendChild(journalElementMood);
     document.getElementById("journalPrintPlaceholder").appendChild(journalEntryBlock);
   };
