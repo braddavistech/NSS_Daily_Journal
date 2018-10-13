@@ -9,7 +9,6 @@ document.getElementById("recordEntry").addEventListener("click", recordEntry);
 fetch("http://localhost:8088/entries")
     .then(entries => entries.json())
     .then(posts => {
-      console.log(posts)
       oldPosts(posts);
     })
 
@@ -27,8 +26,6 @@ function recordEntry () {
   };
   journalEntries.push(tempEntry);
   renderJournalEntries(journalEntries);
-  // journalEntries.push(tempEntry);
-  // renderJournalEntries();
 }
 
 const oldPosts = (message => {
@@ -40,7 +37,6 @@ const oldPosts = (message => {
       journalMood : message[i].journalMood
     };
     journalEntries.push(tempEntry);
-    console.log(journalEntries);
   };
   renderJournalEntries(journalEntries);
 });
