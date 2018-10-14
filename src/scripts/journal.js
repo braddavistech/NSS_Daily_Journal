@@ -1,0 +1,1 @@
+API.getJournalEntries().then(posts => oldPosts(posts))

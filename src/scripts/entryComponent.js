@@ -1,33 +1,28 @@
-function renderJournalEntries () {
-  document.getElementById("journalPrintPlaceholder").innerHTML = "";
-  for (let i = 0; i < journalEntries.length; i++){
-    console.log(journalEntries[i]);
-    let journalEntryBlock = document.createElement("div");
+function renderJournalEntries (temp) {
+  let journalEntryBlock = document.createElement("div");
     journalEntryBlock.className="journalEntryPrint";
     let journalElementDate = document.createElement("p");
-    let journalNodeDate = document.createTextNode("Date: " + journalEntries[i].journalDate);
+    let journalNodeDate = document.createTextNode("Date: " + temp.journalDate);
     journalElementDate.appendChild(journalNodeDate);
     journalEntryBlock.appendChild(journalElementDate);
     let journalElementConcept = document.createElement("p");
-    let journalNodeConcept = document.createTextNode("Concepts Covered: " + journalEntries[i].journalConcept);
+    let journalNodeConcept = document.createTextNode("Concepts Covered: " + temp.journalConcept);
     journalElementConcept.appendChild(journalNodeConcept);
     journalEntryBlock.appendChild(journalElementConcept);
     let journalElementMessage = document.createElement("p");
-    let journalNodeMessage = document.createTextNode("Thoughts/Notes: " + journalEntries[i].journalMessage);
+    let journalNodeMessage = document.createTextNode("Thoughts/Notes: " + temp.journalMessage);
     journalElementMessage.appendChild(journalNodeMessage);
     journalEntryBlock.appendChild(journalElementMessage);
     let journalElementMood = document.createElement("p");
-    let journalNodeMoodValue = journalEntries[i].journalMood;
+    let journalNodeMoodValue = temp.journalMood;
     journalNodeMood = dailyMood(journalNodeMoodValue, journalEntryBlock);
     journalElementMood.innerHTML = journalNodeMood;    
     journalEntryBlock.appendChild(journalElementMood);
     document.getElementById("journalPrintPlaceholder").appendChild(journalEntryBlock);
-  };
 };
 
 function dailyMood (journalNodeMoodValue, journalEntryBlock) {
   let journalNodeMood;
-  
   if (journalNodeMoodValue == "1"){
         journalNodeMood = "General Mood: Optimistic";
         journalEntryBlock.id="optimisticJournalEntry";
