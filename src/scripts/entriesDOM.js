@@ -15,6 +15,7 @@ const oldPosts = (message => {
 document.getElementById("recordEntry").addEventListener("click", recordEntry);
 
 
+
 function recordEntry () {
   function printEntries () {};
   printEntries.prototype = {};
@@ -23,6 +24,9 @@ function recordEntry () {
   temp.journalConcept = document.getElementById("conceptsCovered").value;
   temp.journalMessage = document.getElementById("journalEntryText").value;
   temp.journalMood = document.getElementById("dailyMood").value;
+  console.log(temp)
+  API.postJournalEntries(temp);
+ 
   renderJournalEntries(temp);
   console.log(temp);
 }
