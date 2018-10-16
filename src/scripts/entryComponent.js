@@ -1,3 +1,34 @@
+const inputFields = [
+  {
+    labelFor: "journalDate",
+    labelText: "Date of Entry",
+    inputType: "date"
+  },
+  {
+    labelFor: "conceptsCovered",
+    labelText: "Concepts Covered",
+    inputType: "text",
+    inputPlaceholder: "Enter Concepts Here (Max of 40 Character)"
+  },
+  {
+    labelFor: "journalEntryText",
+    labelText: "Journal Entry",
+    inputType: "text",
+    inputPlaceholder: "Enter Journal Entry Here"
+  },
+  {
+    labelFor: "dailyMood",
+    labelText: "Mood for the Day",
+    inputType: "select",
+    optionValue: ["Optimistic", "Happy", "Excited", "Tired", "Anxious", "Stressed", "Sad"],
+  },
+  {  
+    labelFor: "recordEntry",
+    labelText: "SAVE JOURNAL ENTRY",
+    inputType: "button"
+  }
+];
+
 const DOM = {
     renderJournalEntries (temp) {
       let journalEntryBlock = document.createElement("div");
@@ -46,5 +77,58 @@ const DOM = {
           journalEntryBlock.id="sadJournalEntry";
       };
       return journalEntryBlock, journalNodeMood;
+    },
+    insertForm (){
+      let domHolder = document.querySelector("#blockForm");
+      let titleBlock = document.createElement("h1");
+      titleBlock.setAttribute("id", "journalTitle");
+      titleBlock.innerHTML = "Daily Journal";
+      domHolder.appendChild(titleBlock);
+      let formBox = document.createElement("form");
+      formBox.setAttribute("id", "journalForm"); 
+      for (let i = 0; i < inputFields.length; i++) {
+        if (inputFields[i].inputType != "select" && inputFields[i].inputType != "button"){
+          let field = document.createElement("fieldset");
+          let labelElem = document.createElement("label");
+          labelElem.setAttribute("for", inputFields[i].labelFor);
+          labelElem.setAttribute("class", "labelName");
+          labelElem.innerHTML = inputFields[i].labelText;
+          field.appendChild(labelElem);
+          let inputElem = document.createElement("input");
+          inputElem.setAttribute("type", inputFields[i].inputType);
+          inputElem.setAttribute("class", "inputBox");
+          inputElem.setAttribute("name", inputFields[i].labelFor);
+          inputElem.setAttribute("id", inputFields[i].labelFor);
+          inputElem.setAttribute("placeholder", inputFields[i].inputPlaceholder);
+          field.appendChild(inputElem);
+          formBox.appendChild(field);
+        } else if (inputFields[i].inputType == "select") {
+          let field = document.createElement("fieldset");
+          let labelElem = document.createElement("label");
+          labelElem.setAttribute("for", inputFields[i].labelFor);
+          labelElem.setAttribute("class", "labelName");
+          labelElem.createTextNode = inputFields[i].labelText;
+          field.appendChild(labelElem);
+          let inputElem = document.createElement("select");
+          inputElem.setAttribute("class", "inputBox");
+          inputElem.setAttribute("name", inputFields[i].labelFor);
+          inputElem.setAttribute("id", inputFields[i].labelFor);
+          for(let x = 1; x <= inputFields[i].optionValue.length; x++) {
+            let optionElem = document.createElement("option");
+            optionElem.setAttribute("value", x);
+            optionElem.innerHTML = inputFields[i].optionValue[x-1];
+            inputElem.appendChild(optionElem);
+          } 
+          field.appendChild(inputElem);
+          formBox.appendChild(field);
+        } else if (inputFields[i].inputType == "button") {
+          let buttonElem = document.createElement("input");
+          buttonElem.setAttribute("type", inputFields[i].inputType);
+          buttonElem.setAttribute("id", inputFields[i].labelFor);
+          buttonElem.setAttribute("value", inputFields[i].labelText);
+          formBox.appendChild(buttonElem);
+        } 
+      };
+      domHolder.appendChild(formBox);
     }
-  };
+};
