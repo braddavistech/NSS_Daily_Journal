@@ -72,57 +72,64 @@ body{
   margin-bottom: 15px;
 }
 #optimisticJournalEntry{
-  background-image: url(../images/optimisticImg.jpg);
+  background-image: url(../images/optimistic.png);
   min-height: 150px;
   background-size: contain;
+  width: 95%;
   background-repeat: no-repeat;
   background-position: right;
   background-color: white;
 }
 #happyJournalEntry{
-  background-image: url('../images/happyImg.jpg');
+  background-image: url('../images/happy.png');
   min-height: 150px;
   background-size: contain;
+  width: 95%;
   background-repeat: no-repeat;
   background-position: right;
   background-color: white;
 }
 #excitedJournalEntry{
-  background-image: url('../images/excitedImg.jpg');
+  background-image: url('../images/excited.png');
   min-height: 150px;
   background-size: contain;
+  width: 95%;
   background-repeat: no-repeat;
   background-position: right;
   background-color: white;
 }
 #tiredJournalEntry{
-  background-image: url('../images/tiredImg.jpg');
+  background-image: url('../images/tired.png');
   min-height: 150px;
   background-size: contain;
   background-repeat: no-repeat;
+  width: 95%;
   background-position: right;
   background-color: white;
 }
 #anxiousJournalEntry{
-  background-image: url('../images/anxiousImg.jpg');
+  background-image: url('../images/anxious.png');
   min-height: 150px;
   background-size: contain;
   background-repeat: no-repeat;
+  width: 95%;
   background-position: right;
   background-color: white;
 }
 #stressedJournalEntry{
-  background-image: url('../images/stressedImg.jpg');
+  background-image: url('../images/stressed.png');
   min-height: 150px;
   background-size: contain;
   background-repeat: no-repeat;
+  width: 95%;
   background-position: right;
   background-color: white;
 }
 #sadJournalEntry{
-  background-image: url('../images/sadImg.jpg');
+  background-image: url('../images/sad.png');
   min-height: 150px;
   background-size: contain;
+  width: 95%;
   background-repeat: no-repeat;
   background-position: right;
   background-color: white;
