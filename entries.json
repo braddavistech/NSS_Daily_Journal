@@ -1,0 +1,32 @@
+{
+  "entries": [
+    {
+      "journalDate": "2018-10-01",
+      "journalConcept": "Expectations",
+      "journalMessage": "This was the 1st day of class. Not very technical.",
+      "journalMood": "1",
+      "id": 1
+    },
+    {
+      "journalDate": "2018-10-12",
+      "journalConcept": "Lab day.",
+      "journalMessage": "I worked with Greg for a few minutes to get my fetch request from JSON to work. Most of the day was spent working 1-on-1 or in a small group with people that needed help. I'm glad to be understanding things well enough to help. I was purposeful about DMing them in slack when they asked the class for help so that I don't come off as a know it all.",
+      "journalMood": "4",
+      "id": 2
+    },
+    {
+      "journalDate": "2018-10-13",
+      "journalConcept": "It's the weekend.",
+      "journalMessage": "I enjoyed watching my daughter play soccer. She scored a goal and had a great time. I took a group of guys to a catfish farm and had a nice day. I did some work with Grunt and modularized the journal code.",
+      "journalMood": "3",
+      "id": 3
+    },
+    {
+      "journalDate": "2018-10-15",
+      "journalConcept": "Lab day",
+      "journalMessage": "Installs chrome auto cache clear and reload. Type in terminal. sudo npm install live-server -g  When using forms and trying to console.log, you need to add event.preventDefault() . Also, you have to make sure to pass an argument into the fetch post command.",
+      "journalMood": "3",
+      "id": 4
+    }
+  ]
+}
