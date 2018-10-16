@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>NSS - Cohort 28</title>
+  <meta name="author" content="Brad Davis">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="styles/journal.css" />
+</head>
+<body>
+
+    <div id="blockForm">
+      <h1 id="journalTitle">Daily Journal</h1>
+      <form action=" " id="journalForm">
+        <fieldset>
+          <label for="journalDate" class="labelName">Date of Entry</label>
+          <input type="date" class="inputBox" name="journalDate" id="journalDate">
+        </fieldset>
+          
+        <fieldset> 
+          <label for="conceptsCovered" class="labelName">Concepts Covered</label>
+          <input type="text" class="inputBox" name="conceptsCovered" id="conceptsCovered" placeholder="Enter Concepts Here">
+        </fieldset>
+        
+        <fieldset>
+          <label for="journalEntryText" class="labelName">Journal Entry</label>
+          <input type="text" class="inputBox" name="journalEntryText" id="journalEntryText" placeholder="Journal Entry">
+        </fieldset>
+        
+        <fieldset>
+          <label for="dailyMood" class="labelName">Mood for the Day</label>
+          <select name="dailyMood" class="inputBox" id="dailyMood">
+              <option value = "1">Optimistic</option>
+              <option value = "2">Happy</option>
+              <option value = "3">Excited</option>
+              <option value = "4">Tired</option>
+              <option value = "5">Anxious</option>
+              <option value = "6">Stressed</option>
+              <option value = "7">Sad</option>
+            </select>
+        </fieldset>
+        
+        <input type="button" id="recordEntry" value="SAVE JOURNAL ENTRY">
+      </form>
+    </div>
+
+    <p id="journalPrintPlaceholder"></p>
+
+    <script src="scripts/data.js"></script>
+    <script src="scripts/entriesDOM.js"></script>
+    <script src="scripts/entryComponent.js"></script>
+    <script src="scripts/journal.js"></script>
+
+</body>
+</html>
