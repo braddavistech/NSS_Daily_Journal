@@ -180,7 +180,7 @@ const DOM = {
           labelElem.createTextNode = inputFields[i].labelText;
           field.appendChild(labelElem);
           let inputElem = document.createElement("select");
-          inputElem.setAttribute("class", "inputBox");
+          inputElem.setAttribute("class", "selectBox");
           inputElem.setAttribute("name", inputFields[i].labelFor);
           inputElem.setAttribute("id", inputFields[i].labelFor);
           for(let x = 1; x <= inputFields[i].optionValue.length; x++) {
@@ -198,7 +198,6 @@ const DOM = {
           buttonElem.setAttribute("value", inputFields[i].labelText);
           formBox.appendChild(buttonElem);
         } else if (inputFields[i].labelButton == "radio") {
-          console.log("in");
           let field = document.createElement("fieldset");
           field.setAttribute("id", "entireRadio");
           let labelElem = document.createElement("label");
@@ -223,8 +222,7 @@ const DOM = {
               labelBox.appendChild(labelElem);
               let inputElem = document.createElement("input");
               inputElem.setAttribute("type", "radio");
-              // TODO:Need to create a function findMatched() that gets entries through API and sorts them by changed radios.
-              // inputElem.setAttribute("onchange", DOM.renderJournalEntries(findMatches()));
+              inputElem.setAttribute("onclick", "clearRadio(this)");
               inputElem.setAttribute("class", "radioBox");
               inputElem.setAttribute("name", inputFields[i].indivButtons[x].labelFor);
               inputElem.setAttribute("id", inputFields[i].indivButtons[x].labelFor);
@@ -233,9 +231,20 @@ const DOM = {
             }
           }
           formBox.appendChild(field);
-          console.log(field);
         }
       };
       domHolder.appendChild(formBox);
     }
 };
+
+var moodCheckRadio;
+function clearRadio(moodNow)
+{
+   if (moodCheckRadio == moodNow)
+   { 
+      moodNow.checked = false;
+      moodCheckRadio = null;
+   } else {
+    moodCheckRadio = moodNow;
+   }
+}

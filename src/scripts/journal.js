@@ -1,1 +1,1 @@
-API.getJournalEntries().then(DOM.insertForm()).then(posts => oldPosts(posts)).then(document.getElementById("recordEntry").addEventListener("click", RECORD.recordEntry)).then(document.getElementById("entireRadio").addEventListener("click", RECORD.recordEntry));
+API.getJournalEntries().then(DOM.insertForm()).then(posts => oldPosts(posts)).then(document.getElementById("recordEntry").addEventListener("click", RECORD.recordEntry)).then(document.getElementById("filterJournal").addEventListener("click", API.findMatches));
