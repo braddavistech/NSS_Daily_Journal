@@ -30,6 +30,10 @@ body{
   margin: 1vw;
   width: 114px;
 }
+.selectBox {
+  margin: 1vw;
+  width: 114px;
+}
 .labelName {
   font-size: 1.2em;
   font-weight: bolder;
@@ -77,8 +81,7 @@ body{
 }
 #optimisticJournalEntry{
   background-image: url(../images/optimistic.png);
-  min-height: 150px;
-  background-size: contain;
+  background-size: 150px;
   width: 95%;
   background-repeat: no-repeat;
   background-position: right;
@@ -86,8 +89,7 @@ body{
 }
 #happyJournalEntry{
   background-image: url('../images/happy.png');
-  min-height: 150px;
-  background-size: contain;
+  background-size: 150px;
   width: 95%;
   background-repeat: no-repeat;
   background-position: right;
@@ -95,8 +97,7 @@ body{
 }
 #excitedJournalEntry{
   background-image: url('../images/excited.png');
-  min-height: 150px;
-  background-size: contain;
+  background-size: 150px;
   width: 95%;
   background-repeat: no-repeat;
   background-position: right;
@@ -104,8 +105,7 @@ body{
 }
 #tiredJournalEntry{
   background-image: url('../images/tired.png');
-  min-height: 150px;
-  background-size: contain;
+  background-size: 150px;
   background-repeat: no-repeat;
   width: 95%;
   background-position: right;
@@ -113,8 +113,7 @@ body{
 }
 #anxiousJournalEntry{
   background-image: url('../images/anxious.png');
-  min-height: 150px;
-  background-size: contain;
+  background-size: 150px;
   background-repeat: no-repeat;
   width: 95%;
   background-position: right;
@@ -122,8 +121,7 @@ body{
 }
 #stressedJournalEntry{
   background-image: url('../images/stressed.png');
-  min-height: 150px;
-  background-size: contain;
+  background-size: 150px;
   background-repeat: no-repeat;
   width: 95%;
   background-position: right;
@@ -131,8 +129,7 @@ body{
 }
 #sadJournalEntry{
   background-image: url('../images/sad.png');
-  min-height: 150px;
-  background-size: contain;
+  background-size: 150px;
   width: 95%;
   background-repeat: no-repeat;
   background-position: right;
@@ -151,14 +148,15 @@ body{
   width: 100%;
   text-align: center;
   font-weight: bold;
-  margin-bottom: -4px;
+  margin-bottom: -20px;
   font-size: 4vw;
   display: block;
 }
 .indivBox {
-  width: 60px;
+  width: 76px;
   display: inline-grid;
-  font-size: 9px;
+  font-size: 13px;
+  font-weight: bold;
 }
 #filterJournal {
   font-size: 2vw;

@@ -118,6 +118,7 @@ const DOM = {
       journalNodeMood = DOM.dailyMood(journalNodeMoodValue, journalEntryBlock);
       journalElementMood.innerHTML = journalNodeMood;    
       journalEntryBlock.appendChild(journalElementMood);
+      console.log(journalEntryBlock);
       document.getElementById("journalPrintPlaceholder").appendChild(journalEntryBlock);
     },
     dailyMood (journalNodeMoodValue, journalEntryBlock) {
@@ -180,7 +181,7 @@ const DOM = {
           labelElem.createTextNode = inputFields[i].labelText;
           field.appendChild(labelElem);
           let inputElem = document.createElement("select");
-          inputElem.setAttribute("class", "inputBox");
+          inputElem.setAttribute("class", "selectBox");
           inputElem.setAttribute("name", inputFields[i].labelFor);
           inputElem.setAttribute("id", inputFields[i].labelFor);
           for(let x = 1; x <= inputFields[i].optionValue.length; x++) {
@@ -224,7 +225,8 @@ const DOM = {
               let inputElem = document.createElement("input");
               inputElem.setAttribute("type", "radio");
               // TODO:Need to create a function findMatched() that gets entries through API and sorts them by changed radios.
-              // inputElem.setAttribute("onchange", DOM.renderJournalEntries(findMatches()));
+              inputElem.setAttribute("onclick", "ClearRd(this)");
+              // TODO:Also need to set up all function.
               inputElem.setAttribute("class", "radioBox");
               inputElem.setAttribute("name", inputFields[i].indivButtons[x].labelFor);
               inputElem.setAttribute("id", inputFields[i].indivButtons[x].labelFor);
@@ -239,3 +241,16 @@ const DOM = {
       domHolder.appendChild(formBox);
     }
 };
+
+var checkedRadio;
+function ClearRd(o)
+{
+  console.log(checkedRadio);
+   if (checkedRadio == o)
+   { 
+      o.checked = false;
+      checkedRadio = null;
+   } else {
+     checkedRadio = o;
+   }
+}
