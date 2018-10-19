@@ -26,6 +26,74 @@ const inputFields = [
     labelFor: "recordEntry",
     labelText: "SAVE JOURNAL ENTRY",
     inputType: "button"
+  },
+  {
+    labelFor: "moodButtonBox",
+    labelText: "FILTER ENTRIES BY MOOD",
+    labelButton: "radio",
+    indivButtons: [
+      {
+        labelFor: "allMood",
+        labelText: "SEE ALL",
+        inputType: "radio",
+        inputId: "all",
+        inputValue: "all"
+      },
+      {
+        labelFor: "optMood",
+        labelText: "OPTIMISTIC",
+        inputType: "radio",
+        inputId: "opt",
+        inputValue: "opt"
+      },
+      {
+        labelFor: "hapMood",
+        labelText: "HAPPY",
+        inputType: "radio",
+        inputId: "hap",
+        inputValue: "hap"
+      },
+      {
+        labelFor: "excMood",
+        labelText: "EXCITED",
+        inputType: "radio",
+        inputId: "exc",
+        inputValue: "exc"
+      },
+      {
+        labelFor: "tirMood",
+        labelText: "TIRED",
+        inputType: "radio",
+        inputId: "tir",
+        inputValue: "tir"
+      },
+      {
+        labelFor: "anxMood",
+        labelText: "ANXIOUS",
+        inputType: "radio",
+        inputId: "anx",
+        inputValue: "anx"
+      },
+      {
+        labelFor: "strMood",
+        labelText: "STRESSED",
+        inputType: "radio",
+        inputId: "str",
+        inputValue: "str"
+      },
+      {
+        labelFor: "sadMood",
+        labelText: "SAD",
+        inputType: "radio",
+        inputId: "sad",
+        inputValue: "sad"
+      },
+      {
+        labelFor: "filterJournal",
+        labelText: "FILTER JOURNAL",
+        inputType: "button"
+      }
+    ]
   }
 ];
 
@@ -87,8 +155,9 @@ const DOM = {
       let formBox = document.createElement("form");
       formBox.setAttribute("id", "journalForm"); 
       for (let i = 0; i < inputFields.length; i++) {
-        if (inputFields[i].inputType != "select" && inputFields[i].inputType != "button"){
+        if (inputFields[i].inputType != "select" && inputFields[i].inputType != "button" && inputFields[i].labelButton != "radio"){
           let field = document.createElement("fieldset");
+          field.setAttribute("class", "normalInput");
           let labelElem = document.createElement("label");
           labelElem.setAttribute("for", inputFields[i].labelFor);
           labelElem.setAttribute("class", "labelName");
@@ -104,6 +173,7 @@ const DOM = {
           formBox.appendChild(field);
         } else if (inputFields[i].inputType == "select") {
           let field = document.createElement("fieldset");
+          field.setAttribute("class", "normalInput");
           let labelElem = document.createElement("label");
           labelElem.setAttribute("for", inputFields[i].labelFor);
           labelElem.setAttribute("class", "labelName");
@@ -127,7 +197,44 @@ const DOM = {
           buttonElem.setAttribute("id", inputFields[i].labelFor);
           buttonElem.setAttribute("value", inputFields[i].labelText);
           formBox.appendChild(buttonElem);
-        } 
+        } else if (inputFields[i].labelButton == "radio") {
+          console.log("in");
+          let field = document.createElement("fieldset");
+          field.setAttribute("id", "entireRadio");
+          let labelElem = document.createElement("label");
+          labelElem.setAttribute("for", inputFields[i].labelFor);
+          labelElem.setAttribute("class", "buttonBoxName");
+          labelElem.innerHTML = inputFields[i].labelText;
+          field.appendChild(labelElem);
+          for (let x = 0; x < inputFields[i].indivButtons.length; x++) {
+            if (inputFields[i].indivButtons[x].labelFor == "filterJournal"){
+              let buttonElem = document.createElement("input");
+              buttonElem.setAttribute("type", inputFields[i].indivButtons[x].inputType);
+              buttonElem.setAttribute("id", inputFields[i].indivButtons[x].labelFor);
+              buttonElem.setAttribute("value", inputFields[i].indivButtons[x].labelText);
+              field.appendChild(buttonElem);
+            } else {
+              labelBox = document.createElement("section");
+              labelBox.setAttribute("class", "indivBox");
+              labelElem = document.createElement("label");
+              labelElem.setAttribute("for", inputFields[i].indivButtons[x].labelFor);
+              labelElem.setAttribute("class", "radioName");
+              labelElem.innerHTML = inputFields[i].indivButtons[x].labelText;
+              labelBox.appendChild(labelElem);
+              let inputElem = document.createElement("input");
+              inputElem.setAttribute("type", "radio");
+              // TODO:Need to create a function findMatched() that gets entries through API and sorts them by changed radios.
+              // inputElem.setAttribute("onchange", DOM.renderJournalEntries(findMatches()));
+              inputElem.setAttribute("class", "radioBox");
+              inputElem.setAttribute("name", inputFields[i].indivButtons[x].labelFor);
+              inputElem.setAttribute("id", inputFields[i].indivButtons[x].labelFor);
+              labelBox.appendChild(inputElem);
+              field.appendChild(labelBox);
+            }
+          }
+          formBox.appendChild(field);
+          console.log(field);
+        }
       };
       domHolder.appendChild(formBox);
     }

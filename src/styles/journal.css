@@ -1,5 +1,5 @@
 *{
-  margin: .1em;
+  margin: 0px;
   padding: 0px;
 }
 body{
@@ -19,17 +19,21 @@ body{
   position: relative;
   text-align: center;
 }
-#journalForm > fieldset { 
+#normalInput{
   display: flex;
   flex-direction: column;
+}
+#journalForm > fieldset { 
   background-color: white;
 }
 .inputBox {
-  margin: .5em;
+  margin: 1vw;
+  width: 114px;
 }
 .labelName {
   font-size: 1.2em;
   font-weight: bolder;
+  margin-left: 1vw;
 }
 #conceptsCovered{
   width: 96%;
@@ -41,12 +45,12 @@ body{
   position: relative;
   width: 60%;
   margin-left: 20%;
-  font-size: 1.2em;
+  font-size: 4vw;
   color: white;
   background-color: rgb(226, 66, 66);
   border: 2px solid white;
   border-radius: 15px;
-  margin-top: 3%;
+  margin-top: 1%;
 }
 #recordEntry:hover{
   background-color: red;
@@ -133,4 +137,40 @@ body{
   background-repeat: no-repeat;
   background-position: right;
   background-color: white;
+}
+#entireRadio{
+  text-align: center;
+  padding: 1vw;
+  padding-top: 0vw;
+  margin-top: 1vw;
+}
+.radioBox{
+  margin: auto;
+}
+.buttonBoxName{
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: -4px;
+  font-size: 4vw;
+  display: block;
+}
+.indivBox {
+  width: 60px;
+  display: inline-grid;
+  font-size: 9px;
+}
+#filterJournal {
+  font-size: 2vw;
+  background-color: rgb(226, 66, 66);
+  vertical-align: middle;
+  color: white;
+  padding: 1vw;
+  margin-top: 2.5vw;
+  border: 2px solid white;
+  border-radius: 13px;
+}
+#filterJournal:hover{
+  background-color: red;
+  border: 2px solid black;
 }
