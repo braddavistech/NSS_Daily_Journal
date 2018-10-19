@@ -34,8 +34,6 @@ const API = {
                   moods.push(allNumber);
                 }
               } else {
-                console.log(moodValue)
-                console.log(selected)
                 let tempString = moodValue.toString();
                 moods.push(tempString)
               }

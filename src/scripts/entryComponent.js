@@ -118,7 +118,6 @@ const DOM = {
       journalNodeMood = DOM.dailyMood(journalNodeMoodValue, journalEntryBlock);
       journalElementMood.innerHTML = journalNodeMood;    
       journalEntryBlock.appendChild(journalElementMood);
-      console.log(journalEntryBlock);
       document.getElementById("journalPrintPlaceholder").appendChild(journalEntryBlock);
     },
     dailyMood (journalNodeMoodValue, journalEntryBlock) {
@@ -199,7 +198,6 @@ const DOM = {
           buttonElem.setAttribute("value", inputFields[i].labelText);
           formBox.appendChild(buttonElem);
         } else if (inputFields[i].labelButton == "radio") {
-          console.log("in");
           let field = document.createElement("fieldset");
           field.setAttribute("id", "entireRadio");
           let labelElem = document.createElement("label");
@@ -224,9 +222,7 @@ const DOM = {
               labelBox.appendChild(labelElem);
               let inputElem = document.createElement("input");
               inputElem.setAttribute("type", "radio");
-              // TODO:Need to create a function findMatched() that gets entries through API and sorts them by changed radios.
-              inputElem.setAttribute("onclick", "ClearRd(this)");
-              // TODO:Also need to set up all function.
+              inputElem.setAttribute("onclick", "clearRadio(this)");
               inputElem.setAttribute("class", "radioBox");
               inputElem.setAttribute("name", inputFields[i].indivButtons[x].labelFor);
               inputElem.setAttribute("id", inputFields[i].indivButtons[x].labelFor);
@@ -235,22 +231,20 @@ const DOM = {
             }
           }
           formBox.appendChild(field);
-          console.log(field);
         }
       };
       domHolder.appendChild(formBox);
     }
 };
 
-var checkedRadio;
-function ClearRd(o)
+var moodCheckRadio;
+function clearRadio(moodNow)
 {
-  console.log(checkedRadio);
-   if (checkedRadio == o)
+   if (moodCheckRadio == moodNow)
    { 
-      o.checked = false;
-      checkedRadio = null;
+      moodNow.checked = false;
+      moodCheckRadio = null;
    } else {
-     checkedRadio = o;
+    moodCheckRadio = moodNow;
    }
 }
