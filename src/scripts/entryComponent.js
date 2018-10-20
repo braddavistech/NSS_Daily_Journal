@@ -22,229 +22,156 @@ const inputFields = [
     inputType: "select",
     optionValue: ["Optimistic", "Happy", "Excited", "Tired", "Anxious", "Stressed", "Sad"],
   },
-  {  
+  {
     labelFor: "recordEntry",
     labelText: "SAVE JOURNAL ENTRY",
     inputType: "button"
   },
   {
-    labelFor: "moodButtonBox",
+    labelFor: "buttonBoxName",
     labelText: "FILTER ENTRIES BY MOOD",
+    inputType: "radio",
     labelButton: "radio",
     indivButtons: [
       {
         labelFor: "allMood",
         labelText: "SEE ALL",
-        inputType: "radio",
-        inputId: "all",
-        inputValue: "all"
       },
       {
         labelFor: "optMood",
         labelText: "OPTIMISTIC",
-        inputType: "radio",
-        inputId: "opt",
-        inputValue: "opt"
       },
       {
         labelFor: "hapMood",
         labelText: "HAPPY",
-        inputType: "radio",
-        inputId: "hap",
-        inputValue: "hap"
       },
       {
         labelFor: "excMood",
         labelText: "EXCITED",
-        inputType: "radio",
-        inputId: "exc",
-        inputValue: "exc"
       },
       {
         labelFor: "tirMood",
         labelText: "TIRED",
-        inputType: "radio",
-        inputId: "tir",
-        inputValue: "tir"
       },
       {
         labelFor: "anxMood",
         labelText: "ANXIOUS",
-        inputType: "radio",
-        inputId: "anx",
-        inputValue: "anx"
       },
       {
         labelFor: "strMood",
         labelText: "STRESSED",
-        inputType: "radio",
-        inputId: "str",
-        inputValue: "str"
       },
       {
         labelFor: "sadMood",
         labelText: "SAD",
-        inputType: "radio",
-        inputId: "sad",
-        inputValue: "sad"
       },
-      {
-        labelFor: "filterJournal",
-        labelText: "FILTER JOURNAL",
-        inputType: "button"
-      }
     ]
   }
 ];
 
 const DOM = {
-    renderJournalEntries (temp) {
-      let journalEntryBlock = document.createElement("div");
-      journalEntryBlock.className="journalEntryPrint";
-      let journalElementDate = document.createElement("p");
-      let journalNodeDate = document.createTextNode("Date: " + temp.journalDate);
-      journalElementDate.appendChild(journalNodeDate);
-      journalEntryBlock.appendChild(journalElementDate);
-      let journalElementConcept = document.createElement("p");
-      let journalNodeConcept = document.createTextNode("Concepts Covered: " + temp.journalConcept);
-      journalElementConcept.appendChild(journalNodeConcept);
-      journalEntryBlock.appendChild(journalElementConcept);
-      let journalElementMessage = document.createElement("p");
-      let journalNodeMessage = document.createTextNode("Thoughts/Notes: " + temp.journalMessage);
-      journalElementMessage.appendChild(journalNodeMessage);
-      journalEntryBlock.appendChild(journalElementMessage);
-      let journalElementMood = document.createElement("p");
-      let journalNodeMoodValue = temp.journalMood;
-      journalNodeMood = DOM.dailyMood(journalNodeMoodValue, journalEntryBlock);
-      journalElementMood.innerHTML = journalNodeMood;    
-      journalEntryBlock.appendChild(journalElementMood);
-      document.getElementById("journalPrintPlaceholder").appendChild(journalEntryBlock);
-    },
-    dailyMood (journalNodeMoodValue, journalEntryBlock) {
-      let journalNodeMood;
-      if (journalNodeMoodValue == "1"){
-          journalNodeMood = "General Mood: Optimistic";
-          journalEntryBlock.id="optimisticJournalEntry";
-      } else if (journalNodeMoodValue ==  "2"){
-          journalNodeMood = "General Mood: Happy";
-          journalEntryBlock.id="happyJournalEntry";
-      } else if (journalNodeMoodValue ==  "3"){
-          journalNodeMood = "General Mood: Excited";
-          journalEntryBlock.id="excitedJournalEntry";
-      } else if (journalNodeMoodValue == "4"){
-          journalNodeMood = "General Mood: Tired";
-          journalEntryBlock.id="tiredJournalEntry";
-      } else if (journalNodeMoodValue == "5"){
-          journalNodeMood = "General Mood: Anxious";
-          journalEntryBlock.id="anxiousJournalEntry";
-      } else if (journalNodeMoodValue == "6"){
-          journalNodeMood = "General Mood: Stressed";
-          journalEntryBlock.id="stressedJournalEntry";
-      } else if (journalNodeMoodValue == "7"){
-          journalNodeMood = "General Mood: Sad";
-          journalEntryBlock.id="sadJournalEntry";
-      };
-      return journalEntryBlock, journalNodeMood;
-    },
-    insertForm (){
-      let domHolder = document.querySelector("#blockForm");
-      let titleBlock = document.createElement("h1");
-      titleBlock.setAttribute("id", "journalTitle");
-      titleBlock.innerHTML = "Daily Journal";
-      domHolder.appendChild(titleBlock);
-      let formBox = document.createElement("form");
-      formBox.setAttribute("id", "journalForm"); 
-      for (let i = 0; i < inputFields.length; i++) {
-        if (inputFields[i].inputType != "select" && inputFields[i].inputType != "button" && inputFields[i].labelButton != "radio"){
-          let field = document.createElement("fieldset");
-          field.setAttribute("class", "normalInput");
-          let labelElem = document.createElement("label");
-          labelElem.setAttribute("for", inputFields[i].labelFor);
-          labelElem.setAttribute("class", "labelName");
-          labelElem.innerHTML = inputFields[i].labelText;
-          field.appendChild(labelElem);
-          let inputElem = document.createElement("input");
-          inputElem.setAttribute("type", inputFields[i].inputType);
-          inputElem.setAttribute("class", "inputBox");
-          inputElem.setAttribute("name", inputFields[i].labelFor);
-          inputElem.setAttribute("id", inputFields[i].labelFor);
-          inputElem.setAttribute("placeholder", inputFields[i].inputPlaceholder);
-          field.appendChild(inputElem);
-          formBox.appendChild(field);
-        } else if (inputFields[i].inputType == "select") {
-          let field = document.createElement("fieldset");
-          field.setAttribute("class", "normalInput");
-          let labelElem = document.createElement("label");
-          labelElem.setAttribute("for", inputFields[i].labelFor);
-          labelElem.setAttribute("class", "labelName");
-          labelElem.createTextNode = inputFields[i].labelText;
-          field.appendChild(labelElem);
-          let inputElem = document.createElement("select");
-          inputElem.setAttribute("class", "selectBox");
-          inputElem.setAttribute("name", inputFields[i].labelFor);
-          inputElem.setAttribute("id", inputFields[i].labelFor);
-          for(let x = 1; x <= inputFields[i].optionValue.length; x++) {
-            let optionElem = document.createElement("option");
-            optionElem.setAttribute("value", x);
-            optionElem.innerHTML = inputFields[i].optionValue[x-1];
-            inputElem.appendChild(optionElem);
-          } 
-          field.appendChild(inputElem);
-          formBox.appendChild(field);
-        } else if (inputFields[i].inputType == "button") {
-          let buttonElem = document.createElement("input");
-          buttonElem.setAttribute("type", inputFields[i].inputType);
-          buttonElem.setAttribute("id", inputFields[i].labelFor);
-          buttonElem.setAttribute("value", inputFields[i].labelText);
-          formBox.appendChild(buttonElem);
-        } else if (inputFields[i].labelButton == "radio") {
-          let field = document.createElement("fieldset");
-          field.setAttribute("id", "entireRadio");
-          let labelElem = document.createElement("label");
-          labelElem.setAttribute("for", inputFields[i].labelFor);
-          labelElem.setAttribute("class", "buttonBoxName");
-          labelElem.innerHTML = inputFields[i].labelText;
-          field.appendChild(labelElem);
-          for (let x = 0; x < inputFields[i].indivButtons.length; x++) {
-            if (inputFields[i].indivButtons[x].labelFor == "filterJournal"){
-              let buttonElem = document.createElement("input");
-              buttonElem.setAttribute("type", inputFields[i].indivButtons[x].inputType);
-              buttonElem.setAttribute("id", inputFields[i].indivButtons[x].labelFor);
-              buttonElem.setAttribute("value", inputFields[i].indivButtons[x].labelText);
-              field.appendChild(buttonElem);
-            } else {
-              labelBox = document.createElement("section");
-              labelBox.setAttribute("class", "indivBox");
-              labelElem = document.createElement("label");
-              labelElem.setAttribute("for", inputFields[i].indivButtons[x].labelFor);
-              labelElem.setAttribute("class", "radioName");
-              labelElem.innerHTML = inputFields[i].indivButtons[x].labelText;
-              labelBox.appendChild(labelElem);
-              let inputElem = document.createElement("input");
-              inputElem.setAttribute("type", "radio");
-              inputElem.setAttribute("onclick", "clearRadio(this)");
-              inputElem.setAttribute("class", "radioBox");
-              inputElem.setAttribute("name", inputFields[i].indivButtons[x].labelFor);
-              inputElem.setAttribute("id", inputFields[i].indivButtons[x].labelFor);
-              labelBox.appendChild(inputElem);
-              field.appendChild(labelBox);
-            }
-          }
-          formBox.appendChild(field);
-        }
-      };
-      domHolder.appendChild(formBox);
-    }
+  renderJournalEntries(temp) {
+    let journalEntryBlock = "";
+    temp.forEach(temp => {
+      let moodPrint = DOM.dailyMood(temp.journalMood);
+      journalEntryBlock += `
+        <div class="journalEntryPrint">
+          <p>Date: ${temp.journalDate}</p>
+          <p>Concepts Covered: ${temp.journalConcept}</p>
+          <p>Thoughts/Notes: ${temp.journalMessage}</p>
+          <p>${moodPrint}</p>
+        </div>`
+    })
+    $("#journalPrintPlaceholder").html(journalEntryBlock);
+  },
+  dailyMood(journalNodeMoodValue) {
+    let journalNodeMood = "";
+    if (journalNodeMoodValue == "1") {
+      journalNodeMood= "General Mood: Optimistic";
+    } else if (journalNodeMoodValue == "2") {
+      journalNodeMood = "General Mood: Happy";
+    } else if (journalNodeMoodValue == "3") {
+      journalNodeMood = "General Mood: Excited";
+    } else if (journalNodeMoodValue == "4") {
+      journalNodeMood = "General Mood: Tired";
+    } else if (journalNodeMoodValue == "5") {
+      journalNodeMood = "General Mood: Anxious";
+    } else if (journalNodeMoodValue == "6") {
+      journalNodeMood = "General Mood: Stressed";
+    } else if (journalNodeMoodValue == "7") {
+      journalNodeMood = "General Mood: Sad";
+    };
+    return journalNodeMood;
+  },
+  insertForm() {
+    let formContent = `
+      <h1 id="journalTitle">DAILY JOURNAL</h1>
+      <form id="journalForm">`;
+    inputFields.forEach(temp => {
+      switch (temp.inputType) {
+        case "date":
+          formContent += `
+            <fieldset class="normalInput">
+              <label for="${temp.labelFor}" class="labelName">${temp.labelText}</label>
+              <input type="date" class="inputBox" name="${temp.labelFor}" id="${temp.labelFor}">
+            </fieldset>`
+          break;
+        case "text":
+          formContent += `
+            <fieldset class="normalInput">
+              <label for="${temp.labelFor}" class="labelName">${temp.labelText}</label>
+              <input type="text" class="inputBox" name="${temp.labelFor}" id="${temp.labelFor}" placeholder="${temp.inputPlaceholder}">
+            </fieldset>`
+          break;
+        case "select":
+          formContent += `
+            <fieldset class="normalInput">
+              <label for="${temp.labelFor}" class="labelName">${temp.labelText}</label>
+              <select type="text" class="selectBox" name="${temp.labelFor}" id="${temp.labelFor}">`;
+          let i = 1;
+          temp.optionValue.forEach(option => {
+            formContent += `
+              <option value="${i}">${option}</option>`
+            i++;
+          })
+          formContent += `
+            </select>
+            </fieldset>`
+          break;
+        case "button":
+          formContent += `
+            <input type="button" id="recordEntry" value="SAVE JOURNAL ENTRY">`;
+          break;
+        case "radio":
+          formContent += `
+            <fieldset class="entireRadio">
+              <label for="${temp.labelFor}" class="${temp.labelFor}">${temp.labelText}</label>`
+          temp.indivButtons.forEach(rdButton => {
+            formContent += `
+                <section class="indivBox">
+                  <label for="${rdButton.labelFor}" class="radioName">${rdButton.labelText}</label>
+                  <input type="radio" onclick="clearRadio(this)" class="radioBox" name="${rdButton.labelFor}" id="${rdButton.labelFor}">
+                </section>`
+          })
+          formContent += `
+            <input type="button" id="filterJournal" value="FILTER JOURNAL">
+            </fielset>`
+          break;
+      }
+    })
+    formContent += `</form>`;
+    $("#blockForm").html(formContent);
+    $("#recordEntry").on("click", RECORD.recordEntry);
+    $("#filterJournal").on("click", API.findMatches);
+  }
 };
 
 var moodCheckRadio;
-function clearRadio(moodNow)
-{
-   if (moodCheckRadio == moodNow)
-   { 
-      moodNow.checked = false;
-      moodCheckRadio = null;
-   } else {
+function clearRadio(moodNow) {
+  if (moodCheckRadio == moodNow) {
+    moodNow.checked = false;
+    moodCheckRadio = null;
+  } else {
     moodCheckRadio = moodNow;
-   }
+  }
 }

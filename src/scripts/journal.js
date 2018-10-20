@@ -1,1 +1,4 @@
-API.getJournalEntries().then(DOM.insertForm()).then(posts => oldPosts(posts)).then(document.getElementById("recordEntry").addEventListener("click", RECORD.recordEntry)).then(document.getElementById("filterJournal").addEventListener("click", API.findMatches));
+$(document).ready(function () {
+  DOM.insertForm();
+  API.getJournalEntries().then(posts => DOM.renderJournalEntries(posts));
+});
