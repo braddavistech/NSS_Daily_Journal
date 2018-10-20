@@ -27,6 +27,13 @@
       "journalMessage": "Installs chrome auto cache clear and reload. Type in terminal. sudo npm install live-server -g  When using forms and trying to console.log, you need to add event.preventDefault() . Also, you have to make sure to pass an argument into the fetch post command.",
       "journalMood": "3",
       "id": 4
+    },
+    {
+      "journalDate": "2018-10-19",
+      "journalConcept": "jQuery",
+      "journalMessage": "It has been an interesting time trying to figure out how to use jQuery and at first it seemed somewhat hard to understand. However, with a little more practice, I am sure it will be second nature.",
+      "journalMood": "2",
+      "id": 5
     }
   ]
 }
