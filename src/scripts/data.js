@@ -5,13 +5,15 @@ const API = {
   },
 
   saveJournalEntries(temp) {
-    fetch('http://localhost:8088/entries', {
+    return fetch('http://localhost:8088/entries', {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(temp)
     })
+    .then(contacts => contacts.json())
+    .then(() => API.getJournalEntries())
   },
 
   findMatches() {
