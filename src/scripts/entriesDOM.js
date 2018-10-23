@@ -31,8 +31,7 @@ const RECORD = {
         temp.journalMessage = document.querySelector("#journalEntryText").value;
         temp.journalMood = document.querySelector("#dailyMood").value;
         journalEntries.push(temp);
-        API.saveJournalEntries(temp)
-        DOM.renderJournalEntries(journalEntries);
+        API.saveJournalEntries(temp).then(entries => DOM.renderJournalEntries(entries));
       };
     }
   }

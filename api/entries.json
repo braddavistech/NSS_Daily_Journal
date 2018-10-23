@@ -34,6 +34,13 @@
       "journalMessage": "It has been an interesting time trying to figure out how to use jQuery and at first it seemed somewhat hard to understand. However, with a little more practice, I am sure it will be second nature.",
       "journalMood": "2",
       "id": 5
+    },
+    {
+      "journalDate": "2018-10-22",
+      "journalConcept": "Require and Exports",
+      "journalMessage": "Today has been a day working with exports and require to bundle using browserify. It is an easy concept but tough to put into action.",
+      "journalMood": "4",
+      "id": 6
     }
   ]
 }
