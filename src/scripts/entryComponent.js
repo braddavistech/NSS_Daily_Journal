@@ -65,12 +65,17 @@ const inputFields = [
         labelFor: "sadMood",
         labelText: "SAD",
       },
+      {
+        labelFor: "clearMood",
+        labelText: "RESET",
+      }
     ]
   }
 ];
 
 const DOM = {
   renderJournalEntries(temp) {
+    console.log(DOM);
     let journalEntryBlock = "";
     temp.forEach(temp => {
       let moodPrint = DOM.dailyMood(temp.journalMood);
@@ -86,19 +91,19 @@ const DOM = {
   },
   dailyMood(journalNodeMoodValue) {
     let journalNodeMood = "";
-    if (journalNodeMoodValue == "1") {
+    if (journalNodeMoodValue === "1") {
       journalNodeMood= "General Mood: Optimistic";
-    } else if (journalNodeMoodValue == "2") {
+    } else if (journalNodeMoodValue === "2") {
       journalNodeMood = "General Mood: Happy";
-    } else if (journalNodeMoodValue == "3") {
+    } else if (journalNodeMoodValue === "3") {
       journalNodeMood = "General Mood: Excited";
-    } else if (journalNodeMoodValue == "4") {
+    } else if (journalNodeMoodValue === "4") {
       journalNodeMood = "General Mood: Tired";
-    } else if (journalNodeMoodValue == "5") {
+    } else if (journalNodeMoodValue === "5") {
       journalNodeMood = "General Mood: Anxious";
-    } else if (journalNodeMoodValue == "6") {
+    } else if (journalNodeMoodValue === "6") {
       journalNodeMood = "General Mood: Stressed";
-    } else if (journalNodeMoodValue == "7") {
+    } else if (journalNodeMoodValue === "7") {
       journalNodeMood = "General Mood: Sad";
     };
     return journalNodeMood;
@@ -150,7 +155,7 @@ const DOM = {
             formContent += `
                 <section class="indivBox">
                   <label for="${rdButton.labelFor}" class="radioName">${rdButton.labelText}</label>
-                  <input type="radio" onclick="clearRadio(this)" class="radioBox" name="${rdButton.labelFor}" id="${rdButton.labelFor}">
+                  <input type="radio" class="radioBox" name="${rdButton.labelFor}" id="${rdButton.labelFor}">
                 </section>`
           })
           formContent += `
@@ -159,19 +164,9 @@ const DOM = {
           break;
       }
     })
-    formContent += `</form>`;
+    formContent += "</form>";
     $("#blockForm").html(formContent);
-    $("#recordEntry").on("click", RECORD.recordEntry);
-    $("#filterJournal").on("click", API.findMatches);
   }
 };
 
-var moodCheckRadio;
-function clearRadio(moodNow) {
-  if (moodCheckRadio == moodNow) {
-    moodNow.checked = false;
-    moodCheckRadio = null;
-  } else {
-    moodCheckRadio = moodNow;
-  }
-}
+module.exports = DOM

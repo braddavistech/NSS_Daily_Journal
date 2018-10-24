@@ -6,15 +6,19 @@ const API = {
     return fetch("http://localhost:8088/entries")
       .then(entries => entries.json())
   },
+
   saveJournalEntries(temp) {
-    fetch('http://localhost:8088/entries', {
+    return fetch('http://localhost:8088/entries', {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(temp)
     })
+    .then(contacts => contacts.json())
+    .then(() => API.getJournalEntries())
   },
+
   findMatches() {
     return fetch("http://localhost:8088/entries")
       .then(entries => entries.json())
@@ -26,7 +30,7 @@ const API = {
           let selected = moodElements[i].children[1].checked;
           if (selected === true) {
             let moodValue = i;
-            if (moodValue == 0) {
+            if (moodValue === 0) {
               for (let i = 0; i < moodElements.length; i++) {
                 let tempNum = i;
                 let allNumber = tempNum.toString();
@@ -49,13 +53,46 @@ const API = {
   }
 }
 
-module.exports = API;
+module.exports = API
+},{"./entryComponent":3}],2:[function(require,module,exports){
+const DOM = require("./entryComponent")
+const API = require("./data")
 
-},{"./entryComponent":2}],2:[function(require,module,exports){
 
+const RECORD = {
+  recordEntry() {
+    console.log(DOM.renderJounrnalEntries);
+    let curseWords = false
+    let camelWords = document.querySelector("#conceptsCovered").value + " " + document.querySelector("#journalEntryText").value;
+    let wordString = camelWords.toLowerCase();
+    let wordArray = wordString.split(" ");
+    for (let i = 0; i < wordArray.length; i++) {
+      if (wordArray[i] === "fuck" || wordArray[i] === "shit" || wordArray[i] === "ass" || wordArray[i] === "bitch") {
+        curseWords = true;
+        return alert("You can't curse in this journal. Let's keep it clean.");
+      }
+    };
+    if (curseWords === false) {
+      if (document.querySelector("#journalDate").value === "" || document.querySelector("#conceptsCovered").value === "" || document.querySelector("#journalEntryText").value === "") {
+        alert("All fields must be filled out to record journal entry.");
+      } else if (document.querySelector("#conceptsCovered").value.length > 40) {
+        alert("The maximum amount of characters to record in the concept section is 40.")
+      } else {
+        function printEntries() { };
+        printEntries.prototype = {};
+        let temp = Object.create(printEntries);
+        temp.journalDate = document.querySelector("#journalDate").value;
+        temp.journalConcept = document.querySelector("#conceptsCovered").value;
+        temp.journalMessage = document.querySelector("#journalEntryText").value;
+        temp.journalMood = document.querySelector("#dailyMood").value;
+        API.saveJournalEntries(temp).then(entries => DOM.renderJournalEntries(entries));
+      };
+    }
+  }
+};
 
-var moodCheckRadio;
-
+module.exports = RECORD
+},{"./data":1,"./entryComponent":3}],3:[function(require,module,exports){
 const inputFields = [
   {
     labelFor: "journalDate",
@@ -123,12 +160,17 @@ const inputFields = [
         labelFor: "sadMood",
         labelText: "SAD",
       },
+      {
+        labelFor: "clearMood",
+        labelText: "RESET",
+      }
     ]
   }
 ];
 
 const DOM = {
   renderJournalEntries(temp) {
+    console.log(DOM);
     let journalEntryBlock = "";
     temp.forEach(temp => {
       let moodPrint = DOM.dailyMood(temp.journalMood);
@@ -144,19 +186,19 @@ const DOM = {
   },
   dailyMood(journalNodeMoodValue) {
     let journalNodeMood = "";
-    if (journalNodeMoodValue == "1") {
+    if (journalNodeMoodValue === "1") {
       journalNodeMood= "General Mood: Optimistic";
-    } else if (journalNodeMoodValue == "2") {
+    } else if (journalNodeMoodValue === "2") {
       journalNodeMood = "General Mood: Happy";
-    } else if (journalNodeMoodValue == "3") {
+    } else if (journalNodeMoodValue === "3") {
       journalNodeMood = "General Mood: Excited";
-    } else if (journalNodeMoodValue == "4") {
+    } else if (journalNodeMoodValue === "4") {
       journalNodeMood = "General Mood: Tired";
-    } else if (journalNodeMoodValue == "5") {
+    } else if (journalNodeMoodValue === "5") {
       journalNodeMood = "General Mood: Anxious";
-    } else if (journalNodeMoodValue == "6") {
+    } else if (journalNodeMoodValue === "6") {
       journalNodeMood = "General Mood: Stressed";
-    } else if (journalNodeMoodValue == "7") {
+    } else if (journalNodeMoodValue === "7") {
       journalNodeMood = "General Mood: Sad";
     };
     return journalNodeMood;
@@ -217,31 +259,56 @@ const DOM = {
           break;
       }
     })
-    formContent += `</form>`;
+    formContent += "</form>";
     $("#blockForm").html(formContent);
-    $("#recordEntry").on("click", RECORD.recordEntry);
-    $(".radioBox").on("click", clearRadio);
-    $("#filterJournal").click(API.findMatches);
-  },
-  
+  }
 };
 
-const clearRadio = (moodNow) => {
-  if (moodCheckRadio === moodNow) {
-    moodNow.checked = false;
-    moodCheckRadio = null;
-  } else {
-    moodCheckRadio = moodNow;
+module.exports = DOM
+},{}],4:[function(require,module,exports){
+const API = require("./data");
+const RECORD = require("./entriesDom")
+
+let moodCheckRadio = {};
+
+const EVENTS = {
+  record () {
+    $("#recordEntry").on("click", RECORD.recordEntry);
+  },
+  findMatch () {
+    $("#filterJournal").on("click", API.findMatches);
+  },
+  clearRad () {
+    $(".radioBox").on("click", EVENTS.clearRadio);
+  },
+  clearRadio(moodNow) {
+    
+    console.log(moodNow);
+    if (moodNow.target.name === "clearMood") {
+      let allButtons =[]
+      allButtons = $(".radioBox");
+      console.log("in")
+      console.log(allButtons)
+      for (let i = 0; i < allButtons.length; i++) {
+        allButtons[i].checked = false;
+      };
+      console.log(allButtons);
+    } 
   }
 }
 
-
-},{}],3:[function(require,module,exports){
-const API = require("./data")
+module.exports = EVENTS
+},{"./data":1,"./entriesDom":2}],5:[function(require,module,exports){
 const DOM = require("./entryComponent")
+const API = require("./data")
+const EVENTS = require("./events")
 
-$(document).ready(function () {
-  DOM.insertForm()
-  API.getJournalEntries().then(posts => DOM.renderJournalEntries(posts));
+DOM.insertForm();
+API.getJournalEntries().then(posts => DOM.renderJournalEntries(posts)).then(() => {
+  EVENTS.record();
+  EVENTS.findMatch();
+  EVENTS.clearRad();
 });
-},{"./data":1,"./entryComponent":2}]},{},[3]);
+console.log(DOM.renderJournalEntries);
+
+},{"./data":1,"./entryComponent":3,"./events":4}]},{},[5]);

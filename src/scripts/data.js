@@ -1,3 +1,5 @@
+const DOM = require("./entryComponent")
+
 const API = {
   getJournalEntries() {
     return fetch("http://localhost:8088/entries")
@@ -27,7 +29,7 @@ const API = {
           let selected = moodElements[i].children[1].checked;
           if (selected === true) {
             let moodValue = i;
-            if (moodValue == 0) {
+            if (moodValue === 0) {
               for (let i = 0; i < moodElements.length; i++) {
                 let tempNum = i;
                 let allNumber = tempNum.toString();
@@ -50,3 +52,4 @@ const API = {
   }
 }
 
+module.exports = API

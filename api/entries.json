@@ -41,6 +41,13 @@
       "journalMessage": "Today has been a day working with exports and require to bundle using browserify. It is an easy concept but tough to put into action.",
       "journalMood": "4",
       "id": 6
+    },
+    {
+      "journalDate": "2018-10-23",
+      "journalConcept": "Requires and module.exports",
+      "journalMessage": "Spent the day working on a few small fixes doing dependencies with modularization. Glad to finally understand what to look for when keeping away from circular dependencies.",
+      "journalMood": "4",
+      "id": 7
     }
   ]
 }
