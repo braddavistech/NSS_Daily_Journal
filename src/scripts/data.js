@@ -11,7 +11,7 @@ const API = {
       .then(inputs => inputs.json())
   },
 
-  saveJournalEntries(temp) {
+  saveJournalEntries(temp, tags) {
     return fetch('http://localhost:8088/entries', {
       method: "POST",
       headers: {
@@ -20,7 +20,30 @@ const API = {
       body: JSON.stringify(temp)
     })
     .then(contacts => contacts.json())
+    .then(recent => {
+      if (tags.length === 0) {
+        console.log("no tags")
+        return;
+      } else {tags.forEach (tag => {
+        console.log("many tags", tag)
+        let itemTag = {};
+        itemTag.tagName = tag;
+        itemTag.journalId = recent.id;
+        API.postTag(itemTag);
+      })};
+    })
     .then(() => API.getJournalEntries())
+  },
+
+  postTag(temp) {
+    console.log
+      fetch(`http://localhost:8088/entriesTags`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(temp)
+    })
   },
 
   findMatches() {

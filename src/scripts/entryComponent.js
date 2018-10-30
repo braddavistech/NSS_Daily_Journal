@@ -79,12 +79,16 @@ const DOM = {
             formContent += `
                 <section class="indivBox">
                   <label for="${rdButton.labelFor}" class="radioName">${rdButton.labelText}</label>
-                  <input type="radio" class="radioBox" name="${rdButton.labelFor}" id="${rdButton.labelFor}">
+                  <input type="radio" class="${temp.className}" value="${rdButton.value}" name="${rdButton.labelFor}" id="${rdButton.labelFor}">
                 </section>`
           })
+          if (temp.labelFor === "buttonBoxName") {
           formContent += `
             <input type="button" id="filterJournal" value="FILTER JOURNAL">
             </fielset>`
+          } else {
+            formContent += "</fielset>"
+          }
           break;
       }
     })

@@ -45,10 +45,13 @@ body{
 #journalEntryText{
   width: 96%;
 }
+#keyTags{
+  width: 96%;
+}
 #recordEntry{
   position: relative;
   width: 60%;
-  margin-left: 20%;
+  margin-bottom: 8%;
   font-size: 4vw;
   color: white;
   background-color: rgb(226, 66, 66);
@@ -85,7 +88,6 @@ body{
   text-align: center;
   padding: 1vw;
   padding-top: 0vw;
-  margin-top: 1vw;
 }
 .radioName{
   margin: auto;
@@ -93,6 +95,9 @@ body{
   font-weight: bold;
 }
 .radioBox{
+  margin: auto;
+}
+.tagBox{
   margin: auto;
 }
 .buttonBoxName{
@@ -104,7 +109,7 @@ body{
   display: block;
 }
 .indivBox {
-  width: 76px;
+  padding: 10px;
   display: inline-grid;
   text-align: center;
   font-size: 13px;
@@ -123,4 +128,19 @@ body{
 #filterJournal:hover{
   background-color: red;
   border: 2px solid black;
+}
+.keyTags {
+  display:block;
+  text-align: center;
+  font-weight: bold;
+  font-size: 4vw;
+}
+form > fieldset > section {
+  text-align: center;
+  padding-bottom: 2vw;
+}
+form > fieldset > section > label{
+  margin: auto;
+  font-size: 13px;
+  font-weight: bold;
 }

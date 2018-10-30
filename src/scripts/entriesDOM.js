@@ -24,11 +24,25 @@ const RECORD = {
         printEntries.prototype = {};
         let temp = Object.create(printEntries);
         temp.journalDate = document.querySelector("#journalDate").value;
+        document.querySelector("#journalDate").value = "";
         temp.journalConcept = document.querySelector("#conceptsCovered").value;
+        document.querySelector("#conceptsCovered").value = "";
         temp.journalMessage = document.querySelector("#journalEntryText").value;
+        document.querySelector("#journalEntryText").value = "";
         temp.journalMood = document.querySelector("#dailyMood").value;
+        document.querySelector("#dailyMood").value = 1;
         temp.journalInstructor = document.querySelector("#dailyInstructor").value;
-        API.saveJournalEntries(temp).then(entries => GRABAPI.printSearch(entries));
+        document.querySelector("#dailyInstructor").value = 1;
+        joinTableTag = [];
+        let tagRadio = document.querySelectorAll(".tagBox");
+        tagRadio.forEach(radio => {
+          if (radio.checked === true) {
+            console.log(radio);
+            joinTableTag.push(Number(radio.value));
+            radio.checked = false;
+          }
+        })
+        API.saveJournalEntries(temp, joinTableTag).then(entries => GRABAPI.printSearch(entries));
       };
     }
   }

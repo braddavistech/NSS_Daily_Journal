@@ -12,7 +12,7 @@ const API = {
       .then(inputs => inputs.json())
   },
 
-  saveJournalEntries(temp) {
+  saveJournalEntries(temp, tags) {
     return fetch('http://localhost:8088/entries', {
       method: "POST",
       headers: {
@@ -21,7 +21,30 @@ const API = {
       body: JSON.stringify(temp)
     })
     .then(contacts => contacts.json())
+    .then(recent => {
+      if (tags.length === 0) {
+        console.log("no tags")
+        return;
+      } else {tags.forEach (tag => {
+        console.log("many tags", tag)
+        let itemTag = {};
+        itemTag.tagName = tag;
+        itemTag.journalId = recent.id;
+        API.postTag(itemTag);
+      })};
+    })
     .then(() => API.getJournalEntries())
+  },
+
+  postTag(temp) {
+    console.log
+      fetch(`http://localhost:8088/entriesTags`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(temp)
+    })
   },
 
   findMatches() {
@@ -86,11 +109,25 @@ const RECORD = {
         printEntries.prototype = {};
         let temp = Object.create(printEntries);
         temp.journalDate = document.querySelector("#journalDate").value;
+        document.querySelector("#journalDate").value = "";
         temp.journalConcept = document.querySelector("#conceptsCovered").value;
+        document.querySelector("#conceptsCovered").value = "";
         temp.journalMessage = document.querySelector("#journalEntryText").value;
+        document.querySelector("#journalEntryText").value = "";
         temp.journalMood = document.querySelector("#dailyMood").value;
+        document.querySelector("#dailyMood").value = 1;
         temp.journalInstructor = document.querySelector("#dailyInstructor").value;
-        API.saveJournalEntries(temp).then(entries => GRABAPI.printSearch(entries));
+        document.querySelector("#dailyInstructor").value = 1;
+        joinTableTag = [];
+        let tagRadio = document.querySelectorAll(".tagBox");
+        tagRadio.forEach(radio => {
+          if (radio.checked === true) {
+            console.log(radio);
+            joinTableTag.push(Number(radio.value));
+            radio.checked = false;
+          }
+        })
+        API.saveJournalEntries(temp, joinTableTag).then(entries => GRABAPI.printSearch(entries));
       };
     }
   }
@@ -179,12 +216,16 @@ const DOM = {
             formContent += `
                 <section class="indivBox">
                   <label for="${rdButton.labelFor}" class="radioName">${rdButton.labelText}</label>
-                  <input type="radio" class="radioBox" name="${rdButton.labelFor}" id="${rdButton.labelFor}">
+                  <input type="radio" class="${temp.className}" value="${rdButton.value}" name="${rdButton.labelFor}" id="${rdButton.labelFor}">
                 </section>`
           })
+          if (temp.labelFor === "buttonBoxName") {
           formContent += `
             <input type="button" id="filterJournal" value="FILTER JOURNAL">
             </fielset>`
+          } else {
+            formContent += "</fielset>"
+          }
           break;
       }
     })
