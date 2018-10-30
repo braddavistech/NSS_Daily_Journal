@@ -69,6 +69,14 @@
       "journalMessage": "We finished up our Welcome to Nashville sprint today. The team worked great together and I feel that everyone was willing to jump in to help each other. It didn't feel like anyone was above or below doing any task. Very happy to be on the team that I was on.",
       "journalMood": "1",
       "id": 10
+    },
+    {
+      "journalDate": "2018-10-29",
+      "journalConcept": ".then Promises",
+      "journalMessage": "Struggled with .then promises and getting values back from an API call prior to moving forward in function. Sat down with Jenna and Joe to go over it and learned that sometimes you have to use the requires declaration inside of the function.",
+      "journalMood": "2",
+      "journalInstructor": "3",
+      "id": 11
     }
   ],
   "inputFields": [
@@ -101,6 +109,16 @@
         "Anxious",
         "Stressed",
         "Sad"
+      ]
+    },
+    {
+      "labelFor": "dailyInstructor",
+      "labelText": "Insturctor Who Assisted Most",
+      "inputType": "select",
+      "optionValue": [
+        "Greg Korte",
+        "Jenna Solis",
+        "Joe Shepherd"
       ]
     },
     {
@@ -151,6 +169,23 @@
           "labelText": "RESET"
         }
       ]
+    }
+  ],
+  "instuctors": [
+    {
+      "id": 1,
+      "firstName": "Greg",
+      "lastName": "Korte"
+    },
+    {
+      "id": 2,
+      "firstName": "Jenna",
+      "lastName": "Solis"
+    },
+    {
+      "id": 3,
+      "firstName": "Joe",
+      "lastName": "Shepherd"
     }
   ]
 }

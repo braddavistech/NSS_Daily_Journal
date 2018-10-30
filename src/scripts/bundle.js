@@ -60,14 +60,12 @@ const API = {
 
 module.exports = API
 },{"./entryComponent":3}],2:[function(require,module,exports){
-// const DOM = require("./entryComponent")
 const API = require("./data")
 const GRABAPI = require("./printSearch")
 
 
 const RECORD = {
   recordEntry() {
-    // console.log(DOM.renderJounrnalEntries);
     let curseWords = false
     let camelWords = document.querySelector("#conceptsCovered").value + " " + document.querySelector("#journalEntryText").value;
     let wordString = camelWords.toLowerCase();
@@ -91,6 +89,7 @@ const RECORD = {
         temp.journalConcept = document.querySelector("#conceptsCovered").value;
         temp.journalMessage = document.querySelector("#journalEntryText").value;
         temp.journalMood = document.querySelector("#dailyMood").value;
+        temp.journalInstructor = document.querySelector("#dailyInstructor").value;
         API.saveJournalEntries(temp).then(entries => GRABAPI.printSearch(entries));
       };
     }
@@ -99,11 +98,8 @@ const RECORD = {
 
 module.exports = RECORD
 },{"./data":1,"./printSearch":6}],3:[function(require,module,exports){
-const GRABAPI = require("./printSearch")
-
 const DOM = {
   renderJournalEntries(temp) {
-    console.log(DOM);
     let journalEntryBlock = "";
     temp.forEach(temp => {
       let moodPrint = DOM.dailyMood(temp.journalMood);
@@ -198,7 +194,7 @@ const DOM = {
 };
 
 module.exports = DOM
-},{"./printSearch":6}],4:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 const API = require("./data");
 const RECORD = require("./entriesDom")
 
@@ -215,18 +211,13 @@ const EVENTS = {
     $(".radioBox").on("click", EVENTS.clearRadio);
   },
   clearRadio(moodNow) {
-    
-    console.log(moodNow);
     if (moodNow.target.name === "clearMood") {
       let allButtons =[]
       allButtons = $(".radioBox");
-      console.log("in")
-      console.log(allButtons)
       for (let i = 0; i < allButtons.length; i++) {
         allButtons[i].checked = false;
       };
-      console.log(allButtons);
-    } 
+    }
   }
 }
 
@@ -244,16 +235,11 @@ API.getJournalEntries().then(posts => DOM.renderJournalEntries(posts)).then(() =
   EVENTS.findMatch();
   EVENTS.clearRad();
 });
-// console.log(DOM.renderJournalEntries);
 
 },{"./data":1,"./entryComponent":3,"./events":4,"./printSearch":6}],6:[function(require,module,exports){
-// const API = require("./data")
-
 const GRABAPI = {
   printSearch(temp) {
     const DOM = require("./entryComponent")
-    console.log(DOM);
-    console.log(temp);
     DOM.renderJournalEntries(temp);
   }
 };

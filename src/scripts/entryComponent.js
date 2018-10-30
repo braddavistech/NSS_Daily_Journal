@@ -1,8 +1,5 @@
-const GRABAPI = require("./printSearch")
-
 const DOM = {
   renderJournalEntries(temp) {
-    console.log(DOM);
     let journalEntryBlock = "";
     temp.forEach(temp => {
       let moodPrint = DOM.dailyMood(temp.journalMood);

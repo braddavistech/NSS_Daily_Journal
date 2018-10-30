@@ -10,4 +10,3 @@ API.getJournalEntries().then(posts => DOM.renderJournalEntries(posts)).then(() =
   EVENTS.findMatch();
   EVENTS.clearRad();
 });
-// console.log(DOM.renderJournalEntries);
