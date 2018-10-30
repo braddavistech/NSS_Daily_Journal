@@ -48,6 +48,109 @@
       "journalMessage": "Spent the day working on a few small fixes doing dependencies with modularization. Glad to finally understand what to look for when keeping away from circular dependencies.",
       "journalMood": "4",
       "id": 7
+    },
+    {
+      "journalDate": "2018-10-27",
+      "journalConcept": "Surprise Party for Royce",
+      "journalMessage": "Had a great time in Georgia. Took the family shopping and then went to an animal reserve to kill time before going to the Halloween party. Royce was very surprised and we had a good night with the family.",
+      "journalMood": "2",
+      "id": 8
+    },
+    {
+      "journalDate": "2018-10-28",
+      "journalConcept": "Long Drive Home From GA",
+      "journalMessage": "Drove back from Glennville, GA today. Long drive but made it safely. Spent the evening working on some code which turned into staying up all night working on stuff. Going to be a long day! So happy to have committed to a career change and love the problem solving involved in development.",
+      "journalMood": "4",
+      "id": 9
+    },
+    {
+      "journalDate": "2018-10-29",
+      "journalConcept": "Present Nashville Group Project",
+      "journalMessage": "We finished up our Welcome to Nashville sprint today. The team worked great together and I feel that everyone was willing to jump in to help each other. It didn't feel like anyone was above or below doing any task. Very happy to be on the team that I was on.",
+      "journalMood": "1",
+      "id": 10
+    }
+  ],
+  "inputFields": [
+    {
+      "labelFor": "journalDate",
+      "labelText": "Date of Entry",
+      "inputType": "date"
+    },
+    {
+      "labelFor": "conceptsCovered",
+      "labelText": "Concepts Covered",
+      "inputType": "text",
+      "inputPlaceholder": "Enter Concepts Here (Max of 40 Character)"
+    },
+    {
+      "labelFor": "journalEntryText",
+      "labelText": "Journal Entry",
+      "inputType": "text",
+      "inputPlaceholder": "Enter Journal Entry Here"
+    },
+    {
+      "labelFor": "dailyMood",
+      "labelText": "Mood for the Day",
+      "inputType": "select",
+      "optionValue": [
+        "Optimistic",
+        "Happy",
+        "Excited",
+        "Tired",
+        "Anxious",
+        "Stressed",
+        "Sad"
+      ]
+    },
+    {
+      "labelFor": "recordEntry",
+      "labelText": "SAVE JOURNAL ENTRY",
+      "inputType": "button"
+    },
+    {
+      "labelFor": "buttonBoxName",
+      "labelText": "FILTER ENTRIES BY MOOD",
+      "inputType": "radio",
+      "labelButton": "radio",
+      "indivButtons": [
+        {
+          "labelFor": "allMood",
+          "labelText": "SEE ALL"
+        },
+        {
+          "labelFor": "optMood",
+          "labelText": "OPTIMISTIC"
+        },
+        {
+          "labelFor": "hapMood",
+          "labelText": "HAPPY"
+        },
+        {
+          "labelFor": "excMood",
+          "labelText": "EXCITED"
+        },
+        {
+          "labelFor": "tirMood",
+          "labelText": "TIRED"
+        },
+        {
+          "labelFor": "anxMood",
+          "labelText": "ANXIOUS"
+        },
+        {
+          "labelFor": "strMood",
+          "labelText": "STRESSED"
+        },
+        {
+          "labelFor": "sadMood",
+          "labelText": "SAD"
+        },
+        {
+          "labelFor": "clearMood",
+          "labelText": "RESET"
+        }
+      ]
     }
   ]
 }

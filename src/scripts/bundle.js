@@ -7,6 +7,11 @@ const API = {
       .then(entries => entries.json())
   },
 
+  getForms() {
+    return fetch("http://localhost:8088/inputFields")
+      .then(inputs => inputs.json())
+  },
+
   saveJournalEntries(temp) {
     return fetch('http://localhost:8088/entries', {
       method: "POST",
@@ -55,13 +60,14 @@ const API = {
 
 module.exports = API
 },{"./entryComponent":3}],2:[function(require,module,exports){
-const DOM = require("./entryComponent")
+// const DOM = require("./entryComponent")
 const API = require("./data")
+const GRABAPI = require("./printSearch")
 
 
 const RECORD = {
   recordEntry() {
-    console.log(DOM.renderJounrnalEntries);
+    // console.log(DOM.renderJounrnalEntries);
     let curseWords = false
     let camelWords = document.querySelector("#conceptsCovered").value + " " + document.querySelector("#journalEntryText").value;
     let wordString = camelWords.toLowerCase();
@@ -85,88 +91,15 @@ const RECORD = {
         temp.journalConcept = document.querySelector("#conceptsCovered").value;
         temp.journalMessage = document.querySelector("#journalEntryText").value;
         temp.journalMood = document.querySelector("#dailyMood").value;
-        API.saveJournalEntries(temp).then(entries => DOM.renderJournalEntries(entries));
+        API.saveJournalEntries(temp).then(entries => GRABAPI.printSearch(entries));
       };
     }
   }
 };
 
 module.exports = RECORD
-},{"./data":1,"./entryComponent":3}],3:[function(require,module,exports){
-const inputFields = [
-  {
-    labelFor: "journalDate",
-    labelText: "Date of Entry",
-    inputType: "date"
-  },
-  {
-    labelFor: "conceptsCovered",
-    labelText: "Concepts Covered",
-    inputType: "text",
-    inputPlaceholder: "Enter Concepts Here (Max of 40 Character)"
-  },
-  {
-    labelFor: "journalEntryText",
-    labelText: "Journal Entry",
-    inputType: "text",
-    inputPlaceholder: "Enter Journal Entry Here"
-  },
-  {
-    labelFor: "dailyMood",
-    labelText: "Mood for the Day",
-    inputType: "select",
-    optionValue: ["Optimistic", "Happy", "Excited", "Tired", "Anxious", "Stressed", "Sad"],
-  },
-  {
-    labelFor: "recordEntry",
-    labelText: "SAVE JOURNAL ENTRY",
-    inputType: "button"
-  },
-  {
-    labelFor: "buttonBoxName",
-    labelText: "FILTER ENTRIES BY MOOD",
-    inputType: "radio",
-    labelButton: "radio",
-    indivButtons: [
-      {
-        labelFor: "allMood",
-        labelText: "SEE ALL",
-      },
-      {
-        labelFor: "optMood",
-        labelText: "OPTIMISTIC",
-      },
-      {
-        labelFor: "hapMood",
-        labelText: "HAPPY",
-      },
-      {
-        labelFor: "excMood",
-        labelText: "EXCITED",
-      },
-      {
-        labelFor: "tirMood",
-        labelText: "TIRED",
-      },
-      {
-        labelFor: "anxMood",
-        labelText: "ANXIOUS",
-      },
-      {
-        labelFor: "strMood",
-        labelText: "STRESSED",
-      },
-      {
-        labelFor: "sadMood",
-        labelText: "SAD",
-      },
-      {
-        labelFor: "clearMood",
-        labelText: "RESET",
-      }
-    ]
-  }
-];
+},{"./data":1,"./printSearch":6}],3:[function(require,module,exports){
+const GRABAPI = require("./printSearch")
 
 const DOM = {
   renderJournalEntries(temp) {
@@ -203,7 +136,7 @@ const DOM = {
     };
     return journalNodeMood;
   },
-  insertForm() {
+  insertForm(inputFields) {
     let formContent = `
       <h1 id="journalTitle">DAILY JOURNAL</h1>
       <form id="journalForm">`;
@@ -261,11 +194,11 @@ const DOM = {
     })
     formContent += "</form>";
     $("#blockForm").html(formContent);
-  }
+}
 };
 
 module.exports = DOM
-},{}],4:[function(require,module,exports){
+},{"./printSearch":6}],4:[function(require,module,exports){
 const API = require("./data");
 const RECORD = require("./entriesDom")
 
@@ -302,13 +235,28 @@ module.exports = EVENTS
 const DOM = require("./entryComponent")
 const API = require("./data")
 const EVENTS = require("./events")
+const GRABAPI = require("./printSearch")
 
-DOM.insertForm();
+API.getForms()
+.then(inputs => DOM.insertForm(inputs));
 API.getJournalEntries().then(posts => DOM.renderJournalEntries(posts)).then(() => {
   EVENTS.record();
   EVENTS.findMatch();
   EVENTS.clearRad();
 });
-console.log(DOM.renderJournalEntries);
+// console.log(DOM.renderJournalEntries);
 
-},{"./data":1,"./entryComponent":3,"./events":4}]},{},[5]);
+},{"./data":1,"./entryComponent":3,"./events":4,"./printSearch":6}],6:[function(require,module,exports){
+// const API = require("./data")
+
+const GRABAPI = {
+  printSearch(temp) {
+    const DOM = require("./entryComponent")
+    console.log(DOM);
+    console.log(temp);
+    DOM.renderJournalEntries(temp);
+  }
+};
+
+module.exports = GRABAPI;
+},{"./entryComponent":3}]},{},[5]);

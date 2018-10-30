@@ -6,6 +6,11 @@ const API = {
       .then(entries => entries.json())
   },
 
+  getForms() {
+    return fetch("http://localhost:8088/inputFields")
+      .then(inputs => inputs.json())
+  },
+
   saveJournalEntries(temp) {
     return fetch('http://localhost:8088/entries', {
       method: "POST",

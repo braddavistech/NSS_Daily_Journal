@@ -1,10 +1,11 @@
-const DOM = require("./entryComponent")
+// const DOM = require("./entryComponent")
 const API = require("./data")
+const GRABAPI = require("./printSearch")
 
 
 const RECORD = {
   recordEntry() {
-    console.log(DOM.renderJounrnalEntries);
+    // console.log(DOM.renderJounrnalEntries);
     let curseWords = false
     let camelWords = document.querySelector("#conceptsCovered").value + " " + document.querySelector("#journalEntryText").value;
     let wordString = camelWords.toLowerCase();
@@ -28,7 +29,7 @@ const RECORD = {
         temp.journalConcept = document.querySelector("#conceptsCovered").value;
         temp.journalMessage = document.querySelector("#journalEntryText").value;
         temp.journalMood = document.querySelector("#dailyMood").value;
-        API.saveJournalEntries(temp).then(entries => DOM.renderJournalEntries(entries));
+        API.saveJournalEntries(temp).then(entries => GRABAPI.printSearch(entries));
       };
     }
   }

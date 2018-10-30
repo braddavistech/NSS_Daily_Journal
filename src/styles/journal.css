@@ -23,7 +23,7 @@ body{
   display: flex;
   flex-direction: column;
 }
-#journalForm > fieldset { 
+#journalForm > fieldset {
   background-color: white;
 }
 .inputBox {
@@ -61,7 +61,7 @@ body{
   border: 2px solid black;
 }
 .journalEntryPrint{
-  background-color: lightgrey;
+  background-image: url(../images/paperBackground.jpg);
   font-size: 20px;
   width: 80vw;
   justify-content: center;

@@ -1,77 +1,4 @@
-const inputFields = [
-  {
-    labelFor: "journalDate",
-    labelText: "Date of Entry",
-    inputType: "date"
-  },
-  {
-    labelFor: "conceptsCovered",
-    labelText: "Concepts Covered",
-    inputType: "text",
-    inputPlaceholder: "Enter Concepts Here (Max of 40 Character)"
-  },
-  {
-    labelFor: "journalEntryText",
-    labelText: "Journal Entry",
-    inputType: "text",
-    inputPlaceholder: "Enter Journal Entry Here"
-  },
-  {
-    labelFor: "dailyMood",
-    labelText: "Mood for the Day",
-    inputType: "select",
-    optionValue: ["Optimistic", "Happy", "Excited", "Tired", "Anxious", "Stressed", "Sad"],
-  },
-  {
-    labelFor: "recordEntry",
-    labelText: "SAVE JOURNAL ENTRY",
-    inputType: "button"
-  },
-  {
-    labelFor: "buttonBoxName",
-    labelText: "FILTER ENTRIES BY MOOD",
-    inputType: "radio",
-    labelButton: "radio",
-    indivButtons: [
-      {
-        labelFor: "allMood",
-        labelText: "SEE ALL",
-      },
-      {
-        labelFor: "optMood",
-        labelText: "OPTIMISTIC",
-      },
-      {
-        labelFor: "hapMood",
-        labelText: "HAPPY",
-      },
-      {
-        labelFor: "excMood",
-        labelText: "EXCITED",
-      },
-      {
-        labelFor: "tirMood",
-        labelText: "TIRED",
-      },
-      {
-        labelFor: "anxMood",
-        labelText: "ANXIOUS",
-      },
-      {
-        labelFor: "strMood",
-        labelText: "STRESSED",
-      },
-      {
-        labelFor: "sadMood",
-        labelText: "SAD",
-      },
-      {
-        labelFor: "clearMood",
-        labelText: "RESET",
-      }
-    ]
-  }
-];
+const GRABAPI = require("./printSearch")
 
 const DOM = {
   renderJournalEntries(temp) {
@@ -108,7 +35,7 @@ const DOM = {
     };
     return journalNodeMood;
   },
-  insertForm() {
+  insertForm(inputFields) {
     let formContent = `
       <h1 id="journalTitle">DAILY JOURNAL</h1>
       <form id="journalForm">`;
@@ -166,7 +93,7 @@ const DOM = {
     })
     formContent += "</form>";
     $("#blockForm").html(formContent);
-  }
+}
 };
 
 module.exports = DOM
