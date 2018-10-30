@@ -5,6 +5,7 @@
       "journalConcept": "Expectations",
       "journalMessage": "This was the 1st day of class. Not very technical.",
       "journalMood": "1",
+      "journalInstructor": "3",
       "id": 1
     },
     {
@@ -12,6 +13,7 @@
       "journalConcept": "Lab day.",
       "journalMessage": "I worked with Greg for a few minutes to get my fetch request from JSON to work. Most of the day was spent working 1-on-1 or in a small group with people that needed help. I'm glad to be understanding things well enough to help. I was purposeful about DMing them in slack when they asked the class for help so that I don't come off as a know it all.",
       "journalMood": "4",
+      "journalInstructor": "1",
       "id": 2
     },
     {
@@ -19,6 +21,7 @@
       "journalConcept": "It's the weekend.",
       "journalMessage": "I enjoyed watching my daughter play soccer. She scored a goal and had a great time. I took a group of guys to a catfish farm and had a nice day. I did some work with Grunt and modularized the journal code.",
       "journalMood": "3",
+      "journalInstructor": "3",
       "id": 3
     },
     {
@@ -26,6 +29,7 @@
       "journalConcept": "Lab day",
       "journalMessage": "Installs chrome auto cache clear and reload. Type in terminal. sudo npm install live-server -g  When using forms and trying to console.log, you need to add event.preventDefault() . Also, you have to make sure to pass an argument into the fetch post command.",
       "journalMood": "3",
+      "journalInstructor": "3",
       "id": 4
     },
     {
@@ -33,6 +37,7 @@
       "journalConcept": "jQuery",
       "journalMessage": "It has been an interesting time trying to figure out how to use jQuery and at first it seemed somewhat hard to understand. However, with a little more practice, I am sure it will be second nature.",
       "journalMood": "2",
+      "journalInstructor": "3",
       "id": 5
     },
     {
@@ -40,6 +45,7 @@
       "journalConcept": "Require and Exports",
       "journalMessage": "Today has been a day working with exports and require to bundle using browserify. It is an easy concept but tough to put into action.",
       "journalMood": "4",
+      "journalInstructor": "3",
       "id": 6
     },
     {
@@ -47,6 +53,7 @@
       "journalConcept": "Requires and module.exports",
       "journalMessage": "Spent the day working on a few small fixes doing dependencies with modularization. Glad to finally understand what to look for when keeping away from circular dependencies.",
       "journalMood": "4",
+      "journalInstructor": "3",
       "id": 7
     },
     {
@@ -54,6 +61,7 @@
       "journalConcept": "Surprise Party for Royce",
       "journalMessage": "Had a great time in Georgia. Took the family shopping and then went to an animal reserve to kill time before going to the Halloween party. Royce was very surprised and we had a good night with the family.",
       "journalMood": "2",
+      "journalInstructor": "3",
       "id": 8
     },
     {
@@ -61,6 +69,7 @@
       "journalConcept": "Long Drive Home From GA",
       "journalMessage": "Drove back from Glennville, GA today. Long drive but made it safely. Spent the evening working on some code which turned into staying up all night working on stuff. Going to be a long day! So happy to have committed to a career change and love the problem solving involved in development.",
       "journalMood": "4",
+      "journalInstructor": "3",
       "id": 9
     },
     {
@@ -68,6 +77,7 @@
       "journalConcept": "Present Nashville Group Project",
       "journalMessage": "We finished up our Welcome to Nashville sprint today. The team worked great together and I feel that everyone was willing to jump in to help each other. It didn't feel like anyone was above or below doing any task. Very happy to be on the team that I was on.",
       "journalMood": "1",
+      "journalInstructor": "3",
       "id": 10
     },
     {
@@ -122,6 +132,45 @@
       ]
     },
     {
+      "labelFor": "keyTags",
+      "labelText": "Select Tags For This Entry",
+      "inputType": "radio",
+      "className": "tagBox",
+      "labelButton": "radio",
+      "indivButtons": [
+        {
+          "labelFor": "HTML/CSS",
+          "value": 1,
+          "labelText": "HTML/CSS"
+        },
+        {
+          "labelFor": "JAVASCRIPT",
+          "value": 2,
+          "labelText": "JAVASCRIPT"
+        },
+        {
+          "labelFor": "REACT",
+          "value": 3,
+          "labelText": "REACT"
+        },
+        {
+          "labelFor": "PROMISES",
+          "value": 4,
+          "labelText": "PROMISES"
+        },
+        {
+          "labelFor": "GIT/BROWSERIFY/ETC",
+          "value": 5,
+          "labelText": "GIT/BROWSERIFY/ETC"
+        },
+        {
+          "labelFor": "REVIEW",
+          "value": 6,
+          "labelText": "REVIEW"
+        }
+      ]
+    },
+    {
       "labelFor": "recordEntry",
       "labelText": "SAVE JOURNAL ENTRY",
       "inputType": "button"
@@ -130,6 +179,7 @@
       "labelFor": "buttonBoxName",
       "labelText": "FILTER ENTRIES BY MOOD",
       "inputType": "radio",
+      "className": "radioBox",
       "labelButton": "radio",
       "indivButtons": [
         {
@@ -187,5 +237,8 @@
       "firstName": "Joe",
       "lastName": "Shepherd"
     }
+  ],
+  "entriesTags": [
+
   ]
 }
